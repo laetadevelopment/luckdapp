@@ -2,11 +2,11 @@
   <header>
     <div id="menuButton">
       <button class="background-animation" @click="toggleAppMenu">
-        <img alt="Toggle Menu" src="../../assets/ss-icon.svg">
+        <img alt="Toggle Menu" src="../../assets/luckdapp-icon.svg">
       </button>
     </div>
     <div id="logo">
-      <img @click="home" alt="SSPWA logo" src="../../assets/sspwa-logo.svg">
+      <img @click="home" alt="SSPWA logo" src="../../assets/luckdapp-logo.png">
     </div>
     <div id="appBarButton">
       <button class="background-animation" @click="toggleAppBar">
@@ -61,18 +61,17 @@ header button img {
 }
 /* TODO: animate fill of SVG */
 header #logo {
+  max-width: 50%;
   height: 100%;
   position: absolute;
   left: 50%;
   top: 5px;
   transform: translate(-50%, 0%);
-  display: flex;
   cursor: pointer;
 }
 header #logo img {
-  min-width: 40px;
   max-width: 100%;
-  min-height: 40px;
+  max-height: 100%;
 }
 #appBarButton {
   width: 40px;

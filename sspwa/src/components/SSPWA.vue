@@ -2,10 +2,10 @@
   <div id="sspwa">
     <div id="viewable">
       <div v-if="showInstall" id="intro">
-        <h2 v-if="installApp">Install SSPWA</h2>
-        <img v-if="installApp" @click="install" id="logo" alt="SSPWA logo" src="../assets/sspwa-logo-intro.svg">
-        <h2 v-if="!installApp">Load SSPWA</h2>
-        <img v-if="!installApp" @click="load" id="logo" alt="SSPWA logo" src="../assets/sspwa-logo-intro.svg">
+        <h2 v-if="installApp">Install LuckD.App</h2>
+        <img v-if="installApp" @click="install" id="logo" alt="LuckD.App" src="../assets/luckdapp-logo.png">
+        <h2 v-if="!installApp">Load LuckD.App</h2>
+        <img v-if="!installApp" @click="load" id="logo" alt="LuckD.App" src="../assets/luckdapp-logo.png">
       </div>
       <index v-if="loadIndex" />
     </div>
@@ -64,7 +64,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: rgb(14,95,242);
+  background: rgb(32,113,120);
 }
 #intro h2 {
   margin-top: 5%;

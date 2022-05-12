@@ -1,9 +1,9 @@
 {
-  "name": "SSPWA",
-  "short_name": "SSPWA",
-  "description": "The mission of the SSPWA (Single Screen Progressive Web App) Template is to create a progressive web app experience that feels like interacting with a movie.",
-  "background_color": "#0E5FF2",
-  "theme_color": "#0E5FF2",
+  "name": "LuckD.App",
+  "short_name": "LuckD.App",
+  "description": "The mission of LuckD.App is to create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on pure luck.",
+  "background_color": "#207178",
+  "theme_color": "#339440",
   "icons": [
     {
       "src": "./icons/manifest-icon-192.png",

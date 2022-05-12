@@ -1,14 +1,15 @@
 name: Continuous Integration
-on:
-  pull_request:
-    types:
-      - opened
-    branches:    
-      - 'v**'
-
+'on': pull_request
 jobs:
-  test_pr:
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - name: Start Tests
-        run: echo "Ready to start testing."
+      - uses: actions/checkout@v2
+      - run: cd sspwa && yarn install --immutable --immutable-cache --check-cache && yarn build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LUCKDAPP }}'
+          projectId: luckdapp
+          entryPoint: "./sspwa"

@@ -1,8 +1,8 @@
 <template>
   <div id="appBar">
-    <a class="github-button" href="https://github.com/laetadevelopment/sspwa/subscription" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch laetadevelopment/sspwa on GitHub">Watch</a>
-    <a class="github-button" href="https://github.com/laetadevelopment/sspwa" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star the SSPWA Template on GitHub">Star</a>
-    <a class="github-button" href="https://github.com/laetadevelopment/sspwa/archive/HEAD.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download laetadevelopment/sspwa on GitHub">Download</a>
+    <a class="github-button" href="https://github.com/laetadevelopment/luckdapp/subscription" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch laetadevelopment/luckdapp on GitHub">Watch</a>
+    <a class="github-button" href="https://github.com/laetadevelopment/luckdapp" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star the SSPWA Template on GitHub">Star</a>
+    <a class="github-button" href="https://github.com/laetadevelopment/luckdapp/archive/HEAD.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download laetadevelopment/luckdapp on GitHub">Download</a>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
   align-items: center;
   position: absolute;
   bottom: 0;
-  background: rgba(14,95,242,95%);
-  border-top: 2px solid rgb(14,95,242);
+  background: rgba(51,148,64,95%);
+  border-top: 2px solid rgb(51,148,64);
   box-sizing: border-box;
   z-index: 2;
 }
