@@ -12,7 +12,7 @@
 
 LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA Tokens (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
 
-Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again.
+Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
 
 When a player has zero LDNA in their connected wallet they are given the option to purchase one more LDNA. The purchase amount is set by the DApp and sent to the treasury. If a new LDNA is purchased two more tokens are minted. One is sent to the player that makes the purchase and one is sent to the treasury.
 
@@ -30,7 +30,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v0.0 - Phase Zero
 
-##### v0.0.1 - replace default SSPWA branding with new branding
+##### ~~v0.0.1 - replace default SSPWA branding with new branding~~
 
 #### v0.1 - Phase One
 
@@ -84,7 +84,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v1.5 - Phase Five
 
-##### v1.5.1 - create functionality for minting LNFTS in DApp and connect to SSPWA
+##### v1.5.1 - create functionality for creating LNFTS in DApp and connect to SSPWA
 
 ##### v1.5.2 - create functionality for creating challenges in DApp and connect to SSPWA
 
