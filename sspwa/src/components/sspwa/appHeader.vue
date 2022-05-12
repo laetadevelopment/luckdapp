@@ -61,18 +61,17 @@ header button img {
 }
 /* TODO: animate fill of SVG */
 header #logo {
+  max-width: 50%;
   height: 100%;
   position: absolute;
   left: 50%;
   top: 5px;
   transform: translate(-50%, 0%);
-  display: flex;
   cursor: pointer;
 }
 header #logo img {
-  min-width: 40px;
   max-width: 100%;
-  min-height: 40px;
+  max-height: 100%;
 }
 #appBarButton {
   width: 40px;
