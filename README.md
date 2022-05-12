@@ -1,23 +1,24 @@
-# SSPWA
- [Single Screen Progressive Web App](https://sspw.app "Interact with the SSPWA Template")
-
+# LuckD.App
+ [LuckD.App](https://luckd.app "LuckD.App")
 
 
 ## Mission
 
-> To create a progressive web app experience that feels like interacting with a movie.
+> To create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on pure luck.
 
 
 
 ## Summary
 
-SSPWA (Single Screen Progressive Web App) is a MIT-licensed open source project built with the Vue.js Progressive JavaScript Framework. A good movie experience feels the same on an old, square TV as it does on a new, widescreen TV that has the same screen size. The modern screen may provide an enhanced experience, but you do not loose the quality of the movie in terms of storyline and performance of the actors. A SSPWA will provide a similar experience where the actors in a movie can be compared to the elements on the screen of the app. The app will feel the same regardless of what device you open the app with.
+LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA Tokens (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
 
-To add to the movie experience a SSPWA will allow you to interact with the elements on the screen. When you watch a movie you do not interact with the actors. That would make the experience dynamic and more like a video game. The SSPWA template aims to give you a foundation to build highly interactive app experiences that your users can load and use on any of their devices in a moments notice.
+Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again.
 
-Unlike a traditional PWA (Progressive Web App) or web application in general, the elements on the screen will never exist outside of the screen view. This makes a modern, component based framework like Vue.js ideal to build and manage your SSPWAs. End the endless scrolling of apps and websites today and build the ultimate movie/game/app hybrid of the future!
+When a player has zero LDNA in their connected wallet they are given the option to purchase one more LDNA. The purchase amount is set by the DApp and sent to the treasury. If a new LDNA is purchased two more tokens are minted. One is sent to the player that makes the purchase and one is sent to the treasury.
 
-Please reach out directly through GitHub with any questions, comments, or bug reports.
+Soon players will be able to convert the LDNA in their wallet to Luckcoins (LKC). The amount of LKC the player will receive is based on the value of the LDNA they are converting. The value is determined based on the opacity of the LDNA. The opacity can be anywhere from zero to one hundred percent and the value of each LDNA is equal to the percentage.
+
+Read the architecture below to learn about what features are planned for the future of LuckD.App. Please send any feature suggestions or bug reports through GitHub.
 
 
 
@@ -29,13 +30,11 @@ Please reach out directly through GitHub with any questions, comments, or bug re
 
 #### v0.0 - Phase Zero
 
-##### ~~v0.0.1 - create new repo for project~~
+##### v0.0.1 - replace default SSPWA branding with new branding
 
 #### v0.1 - Phase One
 
-##### ~~v0.1.1 - create new Vue PWA project~~
-
-##### ~~v0.1.2 - remove all defaults from project~~
+##### v0.1.1 - create new Truffle project
 
 
 ### Version One
@@ -43,32 +42,56 @@ Please reach out directly through GitHub with any questions, comments, or bug re
 
 #### v1.0 - Phase Zero
 
-##### ~~v1.0.1 - add project assets~~
-
-##### ~~v1.0.2 - create project scaffolding~~
+##### v1.0.1 - create first view in SSPWA for loading app with no player set
 
 #### v1.1 - Phase One
 
-##### ~~v1.1.1 - add content for project template~~
+##### v1.1.1 - create functionality for LDNA (LuckDNA Tokens) in DApp and connect to new create player view in SSPWA
 
-##### ~~v1.1.2 - add basic styling to content for project template~~
+##### v1.1.2 - create functionality for new player in DApp and connect to new create player view in SSPWA
 
-##### ~~v1.1.3 - add brand styling and interactiveness to content~~
+##### v1.1.3 - create functionality for player home in DApp and connect to player home view in SSPWA
+
+##### v1.1.4 - create functionality for challenges in DApp and connect to new challenges view in SSPWA
+
+##### v1.1.5 - create functionality for Luck Challenge in DApp and connect to new luck challenge view in SSPWA
 
 #### v1.2 - Phase Two
 
-##### ~~v1.2.1 - create CI/CD pipeline for project~~
+##### v1.2.1 - create functionality for player management in DApp and connect to new player management view in SSPWA
 
-##### v1.2.2 - create test cases for project
+##### v1.2.2 - create functionality for player to convert LDNA to LKC (Luckcoins) and connect to new convert view in SSPWA
 
-##### v1.2.3 - create documentation for project
+##### v1.2.3 - create functionality for HiLo Challenge in DApp and connect to new hilo challenge view in SSPWA
 
 #### v1.3 - Phase Three
 
-##### v1.3.1 - add scaffolding for notifications
+##### v1.3.1 - create initial functionality for DAM (DApp Manager) in DApp and connect to new PWAD (progressive web app dashboard)
 
-##### v1.3.2 - create UI/UX for notifications
+##### v1.3.2 - connect new PWAD (LuckDAM) to DApp
 
-##### v1.3.3 - add scaffolding for playing video in app
+##### v1.3.3 - create functionality for minting LNFTS (LuckNFTs) in DApp and connect to LuckDAM
 
-##### v1.3.4 - create UI/UX for video
+##### v1.3.4 - create functionality for LuckNFTs Marketplace in DApp and connect to SSPWA
+
+##### v1.3.5 - create functionality for player avatars in DApp and connect to SSPWA
+
+#### v1.4 - Phase Four
+
+##### v1.4.1 - create LKC ICO on crypto exchange
+
+##### v1.4.2 - add LNFTS trading on NFT exchange
+
+#### v1.5 - Phase Five
+
+##### v1.5.1 - create functionality for minting LNFTS in DApp and connect to SSPWA
+
+##### v1.5.2 - create functionality for creating challenges in DApp and connect to SSPWA
+
+
+### Version Two
+
+
+#### v2.0 - Phase Zero
+
+##### v2.0.1 - create Luck Metaverse (Luckverse) in DApp and connect to SSPWA and LDAM

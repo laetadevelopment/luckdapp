@@ -2,11 +2,11 @@
   <header>
     <div id="menuButton">
       <button class="background-animation" @click="toggleAppMenu">
-        <img alt="Toggle Menu" src="../../assets/ss-icon.svg">
+        <img alt="Toggle Menu" src="../../assets/luckdapp-icon.svg">
       </button>
     </div>
     <div id="logo">
-      <img @click="home" alt="SSPWA logo" src="../../assets/sspwa-logo.svg">
+      <img @click="home" alt="SSPWA logo" src="../../assets/luckdapp-logo.png">
     </div>
     <div id="appBarButton">
       <button class="background-animation" @click="toggleAppBar">

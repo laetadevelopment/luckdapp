@@ -1,11 +1,11 @@
 <template>
   <div v-if="showHome" id="home" class="page">
     <div class="page-title">
-      <h1 ref="title">Single Screen Progressive Web App</h1>
+      <h1 ref="title">Home</h1>
     </div>
     <div class="page-content" ref="content">
-      <h2>The mission of the SSPWA (Single Screen Progressive Web App) Template is to create a progressive web app experience that feels like interacting with a movie.</h2>
-      <p>SSPWA (Single Screen Progressive Web App) is a MIT-licensed open source project built with the Vue.js Progressive JavaScript Framework. A good movie experience feels the same on an old, square TV as it does on a new, widescreen TV that has the same screen size. The modern screen may provide an enhanced experience, but you do not loose the quality of the movie in terms of storyline and performance of the actors. A SSPWA will provide a similar experience where the actors in a movie can be compared to the elements on the screen of the app. The app will feel the same regardless of what device you open the app with.</p>
+      <h2>To create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on pure luck.</h2>
+      <p>LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application (<a href="https://sspw.app" title="Interact with the SSPWA Template">SSPWA</a>) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA Tokens (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.</p>
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="view">View on GitHub</button>
@@ -51,7 +51,7 @@ export default {
       }
     },
     view() {
-      window.open('https://github.com/laetadevelopment/sspwa','_blank');
+      window.open('https://github.com/laetadevelopment/luckdapp','_blank');
     },
     load() {
       this.$emit("load", "learnMore");

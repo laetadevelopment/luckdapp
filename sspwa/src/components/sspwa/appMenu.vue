@@ -20,7 +20,7 @@ export default {
     },
     view() {
       this.$emit("toggle", "appMenu");
-      window.open('https://github.com/laetadevelopment/sspwa','_blank');
+      window.open('https://github.com/laetadevelopment/luckdapp','_blank');
     }
   }
 }
