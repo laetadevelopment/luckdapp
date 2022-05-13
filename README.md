@@ -34,7 +34,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v0.1 - Phase One
 
-##### v0.1.1 - create new Truffle project
+##### ~~v0.1.1 - create new Truffle project~~
 
 
 ### Version One

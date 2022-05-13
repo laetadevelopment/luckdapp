@@ -4,7 +4,7 @@
       <h1 ref="title">Learn More</h1>
     </div>
     <div class="page-content" ref="content">
-      <p>Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again.</p>
+      <p>Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.</p>
       <p>When a player has zero LDNA in their connected wallet they are given the option to purchase one more LDNA. The purchase amount is set by the DApp and sent to the treasury. If a new LDNA is purchased two more tokens are minted. One is sent to the player that makes the purchase and one is sent to the treasury.</p>
     </div>
     <div class="page-cta" ref="cta">
