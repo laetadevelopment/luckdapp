@@ -82,7 +82,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  font-family: oswald, sans-serif;
+  font-family: lato, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -93,8 +93,8 @@ main {
   display: flex;
 }
 h1, h2, h3 {
-  font-family: raleway-v20-deprecated, sans-serif;
-  font-weight: 900;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
   font-style: normal;
   margin: 0;
   margin-bottom: 10px;
@@ -146,8 +146,8 @@ button {
     background: rgba(255,150,102,90%);
   }
   75% {
-    border-color: rgb(32,113,120);
-    background: rgba(32,113,120,90%);
+    border-color: rgb(26,117,133);
+    background: rgba(26,117,133,90%);
   }
   100% {
     border-color: rgb(23,76,79);
@@ -168,8 +168,8 @@ button {
     background: rgba(255,150,102,75%);
   }
   75% {
-    border-color: rgb(32,113,120);
-    background: rgba(32,113,120,75%);
+    border-color: rgb(26,117,133);
+    background: rgba(26,117,133,75%);
   }
   100% {
     border-color: rgb(23,76,79);
