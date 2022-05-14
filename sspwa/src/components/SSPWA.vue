@@ -1,11 +1,23 @@
 <template>
   <div id="sspwa">
     <div id="viewable">
-      <div v-if="showInstall" id="intro">
-        <h2 v-if="installApp">Install LuckD.App</h2>
-        <img v-if="installApp" @click="install" id="logo" alt="LuckD.App" src="../assets/luckdapp-logo.png">
-        <h2 v-if="!installApp">Load LuckD.App</h2>
-        <img v-if="!installApp" @click="load" id="logo" alt="LuckD.App" src="../assets/luckdapp-logo.png">
+      <div v-if="showIntro" id="intro">
+        <div class="intro">
+          <h2>Do you feel lucky?</h2>
+          <p>New players are given their first LuckDNA Token (LDNA) in order to try their luck in the Luck Challenge.</p>
+          <button @click="load">Learn More</button>
+        </div>
+        <video-background 
+          ref="videobackground"
+          :src="require('@/assets/luckdapp-intro.mp4')"
+          :muted="false"
+          :loop="false"
+          @click="play"
+        />
+        <div class="intro-cta">
+          <h3>Create a player, get your first LDNA!</h3>
+          <button class="background-animation">Create New Player</button>
+        </div>
       </div>
       <index v-if="loadIndex" />
     </div>
@@ -14,16 +26,17 @@
 
 <script>
 import index from './sspwa/index.vue'
+import VideoBackground from 'vue-responsive-video-background-player'
 
 export default {
   name: 'SSPWA',
   components: {
-    index
+    index,
+    VideoBackground
   },
   data() {
     return {
-      installApp: null,
-      showInstall: true,
+      showIntro: true,
       loadIndex: false
     }
   },
@@ -41,8 +54,11 @@ export default {
       this.installApp.prompt();
     },
     load() {
-      this.showInstall = false;
+      this.showIntro = false;
       this.loadIndex = true;
+    },
+    play() {
+      this.$refs.videobackground.player.play();
     }
   }
 }
@@ -62,21 +78,44 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  background: rgb(32,113,120);
+  align-items: center;
+  background: rgb(26,117,133);
+  font-family: lato, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
 }
-#intro h2 {
-  margin-top: 5%;
+#intro h2, #intro h3, #intro p {
   color: rgb(255,255,255);
 }
-#intro #logo {
-  max-width: 50%;
-  max-height: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.intro, .intro-cta {
+  height: 15%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.intro button {
+  height: 40px;
+  border-radius: 40px;
+  color: rgb(255,255,255);
+  border-color: rgb(255,255,255);
+}
+.intro button:hover {
+  background: rgb(255,255,255);
+  color: rgb(26,117,133);
+}
+.intro-cta button {
+  width: 75%;
+  height: 50px;
+  border-radius: 50px;
+  border-color: rgb(255,255,255) !important;
+}
+#intro .vue-responsive-videobg {
+  height: 70%;
+  max-height: 45vh;
   cursor: pointer;
 }
 </style>

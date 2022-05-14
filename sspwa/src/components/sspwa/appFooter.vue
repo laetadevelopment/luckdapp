@@ -1,6 +1,5 @@
 <template>
   <footer>
-    <h3>Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" title="MIT License">MIT License</a></h3>
     <h3>Copyright &copy; 2022 <a href="https://github.com/laetadevelopment" target="_blank" title="Laeta Development on GitHub">Laeta Development</a></h3>
   </footer>
 </template>
