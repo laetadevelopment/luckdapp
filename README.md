@@ -42,7 +42,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v1.0 - Phase Zero
 
-##### v1.0.1 - create first view in SSPWA for loading app with no player set
+##### v1.0.1 - ~~create first view in SSPWA for loading app with no player set~~
 
 #### v1.1 - Phase One
 
