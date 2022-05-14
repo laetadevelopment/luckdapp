@@ -3,9 +3,12 @@
     <div id="viewable">
       <div v-if="showIntro" id="intro">
         <div class="intro">
-          <h2>Do you feel lucky?</h2>
-          <p>New players are given their first LuckDNA Token (LDNA) in order to try their luck in the Luck Challenge.</p>
-          <button @click="load">Learn More</button>
+          <div class="intro-header">
+            <button @click="install">Install LuckD.App</button>
+            <h2>Do you feel lucky?</h2>
+            <button @click="load">Learn More</button>
+          </div>
+          <p>New players are given their first LuckDNA Token (LDNA) so they can try their luck on LuckD.App!</p>
         </div>
         <video-background 
           ref="videobackground"
@@ -15,7 +18,6 @@
           @click="play"
         />
         <div class="intro-cta">
-          <h3>Create a player, get your first LDNA!</h3>
           <button class="background-animation">Create New Player</button>
         </div>
       </div>
@@ -87,28 +89,38 @@ export default {
   font-style: normal;
   text-align: center;
 }
-#intro h2, #intro h3, #intro p {
+#intro h2, #intro p {
+  margin: 0;
   color: rgb(255,255,255);
 }
 .intro, .intro-cta {
-  height: 15%;
-  padding: 20px;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.intro button {
+.intro p {
+  font-size: 1.1em;
+}
+.intro-header {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro-header button {
   height: 40px;
   border-radius: 40px;
   color: rgb(255,255,255);
   border-color: rgb(255,255,255);
 }
-.intro button:hover {
+.intro-header button:hover {
   background: rgb(255,255,255);
   color: rgb(26,117,133);
 }
 .intro-cta button {
-  width: 75%;
+  width: 250px;
   height: 50px;
   border-radius: 50px;
   border-color: rgb(255,255,255) !important;
