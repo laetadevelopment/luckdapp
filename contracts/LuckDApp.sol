@@ -17,6 +17,7 @@ contract LuckDApp is Ownable {
   LDNA ldna;
   LDNA[] public luckDNA;
 
+  mapping (address => string) public playerToName;
   mapping (uint => address) public ldnaToOwner;
   mapping (bytes32 => uint) hashToLDNA;
 
@@ -56,7 +57,9 @@ contract LuckDApp is Ownable {
     }
   }
 
-  function newPlayer() public {
+  function newPlayer(string memory name) public {
+    require(bytes(playerToName[msg.sender]).length == 0);
+    playerToName[msg.sender] = name;
     _createLdna(msg.sender);
     _createLdna(address(this));
   }
