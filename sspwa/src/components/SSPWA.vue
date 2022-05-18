@@ -50,12 +50,13 @@ export default {
   data() {
     return {
       showIntro: true,
-      showVideoBackground: false,
+      showVideoBackground: true,
       createNewPlayer: false,
       loadIndex: false
     }
   },
   created() {
+    this.$store.dispatch('setMetamask');
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       this.installApp = e;
@@ -79,9 +80,6 @@ export default {
       this.showVideoBackground = false;
       this.createNewPlayer = true;
     }
-  },
-  mounted() {
-    this.$store.dispatch('setMetamask');
   }
 }
 </script>

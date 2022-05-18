@@ -5,7 +5,7 @@
       <button class="background-animation" @click="install"><img alt="Install MetaMask" src="../../assets/metamask-fox.svg">Install MetaMask</button>
     </div>
     <div v-if="metamask.installed" class="metamask-installed">
-      <button class="background-animation" @click="connect"><img alt="Login with MetaMask" src="../../assets/metamask-fox.svg">Connect Wallet</button>
+      <button class="background-animation" @click="create"><img alt="Login with MetaMask" src="../../assets/metamask-fox.svg">Create Player</button>
     </div>
   </div>
 </template>
@@ -34,12 +34,16 @@ export default {
       event.target.disabled = true;
       this.$store.dispatch('installMetamask');
     },
-    connect() {
+    create() {
       if (this.name) {
-        this.$store.dispatch({
-          type: 'connectMetamask',
-          name: this.name
-        });
+        if (this.metamask.web3.currentProvider.networkVersion == 5777) {
+          this.$store.dispatch({
+            type: 'createPlayer',
+            name: this.name
+          });
+        } else {
+          this.$store.dispatch('switchNetwork');
+        }
       } else {
         this.$refs.name.style.borderColor = "rgb(255,150,102)";
       }
