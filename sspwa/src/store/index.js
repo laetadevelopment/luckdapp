@@ -39,10 +39,9 @@ export default createStore({
   actions: {
     setMetamask ({commit}) {
       metamask.then(result => {
-        console.log(result);
         commit('updateMetamask', result);
       }).catch(e => {
-        console.log('error updating MetaMask', e);
+        console.error('Error setting MetaMask:', e);
       })
     },
     installMetamask () {
@@ -71,7 +70,7 @@ export default createStore({
           }
         });
       }).catch(e => {
-        console.log('error connecting MetaMask', e);
+        console.error('Error connecting MetaMask:', e);
       })
     },
     switchNetwork (context) {
