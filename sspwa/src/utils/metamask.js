@@ -8,6 +8,7 @@ let metamask = new Promise(function (resolve, reject) {
       installed: ethereum.isMetaMask,
       connected: ethereum.isConnected(),
       address: ethereum.selectedAddress,
+      network: ethereum.networkVersion,
       ethereum: ethereum,
       web3: web3
     })

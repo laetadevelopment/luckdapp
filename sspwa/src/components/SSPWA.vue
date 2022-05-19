@@ -11,14 +11,18 @@
           <p>New players are given their first LuckDNA Token (LDNA) so they can try their luck on LuckD.App!</p>
         </div>
         <video-background 
+          v-if="showVideoBackground"
           ref="videobackground"
           :src="require('@/assets/luckdapp-intro.mp4')"
           :muted="false"
           :loop="false"
           @click="play"
         />
+        <createplayer v-if="createNewPlayer" />
         <div class="intro-cta">
-          <button class="background-animation">Create New Player</button>
+          <button v-if="!createNewPlayer" class="background-animation" @click="newPlayer">Create New Player</button>
+          <h3 v-if="createNewPlayer">Enter your name and connect your wallet to gain access to LuckD.App.</h3>
+          <p v-if="createNewPlayer">After creating a player you will be transferred your first LDNA!</p>
         </div>
       </div>
       <index v-if="loadIndex" />
@@ -27,22 +31,32 @@
 </template>
 
 <script>
-import index from './sspwa/index.vue'
 import VideoBackground from 'vue-responsive-video-background-player'
+import createplayer from './dapp/createplayer.vue'
+import index from './sspwa/index.vue'
 
 export default {
   name: 'SSPWA',
   components: {
-    index,
-    VideoBackground
+    VideoBackground,
+    createplayer,
+    index
+  },
+  computed: {
+    metamask() {
+      return this.$store.state.metamask;
+    }
   },
   data() {
     return {
       showIntro: true,
+      showVideoBackground: true,
+      createNewPlayer: false,
       loadIndex: false
     }
   },
   created() {
+    this.$store.dispatch('setMetamask');
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       this.installApp = e;
@@ -61,6 +75,10 @@ export default {
     },
     play() {
       this.$refs.videobackground.player.play();
+    },
+    newPlayer() {
+      this.showVideoBackground = false;
+      this.createNewPlayer = true;
     }
   }
 }
@@ -93,6 +111,9 @@ export default {
   margin: 0;
   color: rgb(255,255,255);
 }
+#intro h3 {
+  color: rgb(255,255,255);
+}
 .intro, .intro-cta {
   width: 95%;
   display: flex;
@@ -100,7 +121,7 @@ export default {
   align-items: center;
 }
 .intro p {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .intro-header {
   width: 100%;
@@ -119,15 +140,16 @@ export default {
   background: rgb(255,255,255);
   color: rgb(26,117,133);
 }
+#intro .vue-responsive-videobg {
+  height: 70%;
+  max-height: 45vh;
+  cursor: pointer;
+}
 .intro-cta button {
   width: 250px;
   height: 50px;
   border-radius: 50px;
   border-color: rgb(255,255,255) !important;
-}
-#intro .vue-responsive-videobg {
-  height: 70%;
-  max-height: 45vh;
-  cursor: pointer;
+  font-size: 1.1em;
 }
 </style>

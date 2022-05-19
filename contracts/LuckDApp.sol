@@ -14,19 +14,19 @@ contract LuckDApp is Ownable {
     string a;
   }
 
-  LDNA ldna;
   LDNA[] public luckDNA;
 
+  mapping (address => string) public playerToName;
   mapping (uint => address) public ldnaToOwner;
-  mapping (bytes32 => uint) hashToLDNA;
+  mapping (bytes32 => bool) hashToLDNA;
 
   function _createLdna(address owner) internal {
-    ldna = _generateRandomLdna(owner);
+    LDNA memory ldna = _generateRandomLdna(owner);
     luckDNA.push(ldna);
     uint id = luckDNA.length - 1;
     ldnaToOwner[id] = owner;
     bytes32 hash = keccak256(abi.encodePacked(ldna.r, ldna.g, ldna.b, ldna.a));
-    hashToLDNA[hash] = id;
+    hashToLDNA[hash] = true;
   }
 
   function _generateRandomLdna(address owner) internal returns (LDNA memory l) {
@@ -49,14 +49,16 @@ contract LuckDApp is Ownable {
   }
 
   function ldnaExists(string memory r, string memory g, string memory b, string memory a) public view returns (bool) {
-    if (hashToLDNA[keccak256(abi.encodePacked(r, g, b, a))] > 0) {
+    if (hashToLDNA[keccak256(abi.encodePacked(r, g, b, a))]) {
       return true;
     } else {
       return false;
     }
   }
 
-  function newPlayer() public {
+  function newPlayer(string memory name) public {
+    require(bytes(playerToName[msg.sender]).length == 0);
+    playerToName[msg.sender] = name;
     _createLdna(msg.sender);
     _createLdna(address(this));
   }
