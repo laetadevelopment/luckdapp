@@ -48,7 +48,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 ##### v1.1.1 - ~~create functionality for LDNA (LuckDNA Tokens) in DApp~~
 
-##### v1.1.2 - create functionality for new player in DApp and connect to new create player view in SSPWA
+##### v1.1.2 - ~~create functionality for new player in DApp and connect to new create player view in SSPWA~~
 
 ##### v1.1.3 - create functionality for player home in DApp and connect to player home view in SSPWA
 
