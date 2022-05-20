@@ -22,7 +22,6 @@ export default createStore({
     },
     player: {
       name: null,
-      address: null,
       ldna: null
     }
   },
@@ -39,6 +38,11 @@ export default createStore({
       metamaskCopy.ethereum = result.ethereum;
       metamaskCopy.web3 = result.web3;
       state.metamask = metamaskCopy;
+    },
+    updatePlayer (state, payload) {
+      let player = payload;
+      state.player.name = player.name;
+      state.player.ldna = player.ldna;
     }
   },
   actions: {
@@ -65,19 +69,21 @@ export default createStore({
         LuckDApp.deployed().then((instance) => instance.playerToName.call(context.state.metamask.address)).then((name) => {
           if (!name) {
             LuckDApp.deployed().then((instance) => instance.newPlayer(payload.name)).then((result) => {
-              context.state.player.name = payload.name;
-              context.state.player.address = context.state.metamask.address;
               LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
-                context.state.player.ldna = ldna.toString();
+                context.commit('updatePlayer', {
+                  name: payload.name,
+                  ldna: ldna.toString()
+                });
               });
             });
           } else {
-            context.state.player.name = name;
-            context.state.player.address = context.state.metamask.address;
             LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
-              context.state.player.ldna = ldna.toString();
+              console.error('There is already a player associated with this wallet.');
+              context.commit('updatePlayer', {
+                name: name,
+                ldna: ldna.toString()
+              });
             });
-            console.error('There is already a player associated with this wallet.');
           }
         });
       }).catch(e => {
