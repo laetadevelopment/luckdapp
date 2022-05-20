@@ -77,7 +77,6 @@ export default createStore({
             LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
               context.state.player.ldna = ldna.toString();
             });
-            console.log(context.state.player);
             console.error('There is already a player associated with this wallet.');
           }
         });
