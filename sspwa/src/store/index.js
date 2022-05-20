@@ -29,20 +29,16 @@ export default createStore({
   },
   mutations: {
     updateMetamask (state, payload) {
-      let result = payload;
-      let metamaskCopy = state.metamask;
-      metamaskCopy.installed = result.installed;
-      metamaskCopy.connected = result.connected;
-      metamaskCopy.address = result.address;
-      metamaskCopy.network = result.network;
-      metamaskCopy.ethereum = result.ethereum;
-      metamaskCopy.web3 = result.web3;
-      state.metamask = metamaskCopy;
+      state.metamask.installed = payload.installed;
+      state.metamask.connected = payload.connected;
+      state.metamask.address = payload.address;
+      state.metamask.network = payload.network;
+      state.metamask.ethereum = payload.ethereum;
+      state.metamask.web3 = payload.web3;
     },
     updatePlayer (state, payload) {
-      let player = payload;
-      state.player.name = player.name;
-      state.player.ldna = player.ldna;
+      state.player.name = payload.name;
+      state.player.ldna = payload.ldna;
     }
   },
   actions: {
