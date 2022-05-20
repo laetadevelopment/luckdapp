@@ -1,9 +1,14 @@
 import { createStore } from 'vuex'
+import VuexPersistence from 'vuex-persist'
 import metamask from '../utils/metamask'
 import MetaMaskOnboarding from '@metamask/onboarding'
 import contract from '@truffle/contract'
 import artifacts from '../../build/contracts/LuckDApp.json'
 const LuckDApp = contract(artifacts)
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: state => ({ player: state.player })
+})
 
 export default createStore({
   state: {
@@ -62,10 +67,17 @@ export default createStore({
             LuckDApp.deployed().then((instance) => instance.newPlayer(payload.name)).then((result) => {
               context.state.player.name = payload.name;
               context.state.player.address = context.state.metamask.address;
+              LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
+                context.state.player.ldna = ldna.toString();
+              });
             });
           } else {
             context.state.player.name = name;
             context.state.player.address = context.state.metamask.address;
+            LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
+              context.state.player.ldna = ldna.toString();
+            });
+            console.log(context.state.player);
             console.error('There is already a player associated with this wallet.');
           }
         });
@@ -82,5 +94,6 @@ export default createStore({
     }
   },
   modules: {
-  }
+  },
+  plugins: [vuexLocal.plugin]
 })

@@ -1,7 +1,7 @@
 <template>
   <div id="sspwa">
     <div id="viewable">
-      <div v-if="showIntro" id="intro">
+      <div v-if="showIntro && !player.name" id="intro">
         <div class="intro">
           <div class="intro-header">
             <button @click="install">Install LuckD.App</button>
@@ -26,6 +26,7 @@
         </div>
       </div>
       <index v-if="loadIndex" />
+      <playerindex v-if="player.name" />
     </div>
   </div>
 </template>
@@ -34,17 +35,19 @@
 import VideoBackground from 'vue-responsive-video-background-player'
 import createplayer from './dapp/createplayer.vue'
 import index from './sspwa/index.vue'
+import playerindex from './dapp/playerindex.vue'
 
 export default {
   name: 'SSPWA',
   components: {
     VideoBackground,
     createplayer,
-    index
+    index,
+    playerindex
   },
   computed: {
-    metamask() {
-      return this.$store.state.metamask;
+    player() {
+      return this.$store.state.player;
     }
   },
   data() {
@@ -56,7 +59,6 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('setMetamask');
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       this.installApp = e;
@@ -64,6 +66,7 @@ export default {
     window.addEventListener("appinstalled", () => {
       this.installApp = null;
     });
+    this.$store.dispatch('setMetamask');
   },
   methods: {
     async install() {
