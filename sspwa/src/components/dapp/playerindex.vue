@@ -164,6 +164,9 @@ export default {
         this.showLuckChallenge = false;
         this.showHiLoChallenge = false;
         this.showMarketplace = false;
+        this.showLDNA = false;
+        this.showLKC = false;
+        this.showLNFTS = false;
         this.showLuckverse = true;
         if (this.showDAppMenu) {
           this.showDAppMenu = false;

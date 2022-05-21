@@ -52,7 +52,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 ##### v1.1.3 - ~~create functionality for player home in DApp and connect to player home view in SSPWA~~
 
-##### v1.1.4 - create new challenges view in SSPWA
+##### v1.1.4 - ~~create new challenges view in SSPWA~~
 
 ##### v1.1.5 - create functionality for Luck Challenge in DApp and connect to new luck challenge view in SSPWA
 
