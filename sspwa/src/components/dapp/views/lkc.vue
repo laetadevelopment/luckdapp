@@ -50,7 +50,6 @@ export default {
   },
   mounted() {
     this.overflow();
-    window.addEventListener("resize", this.overflow);
   }
 }
 </script>
