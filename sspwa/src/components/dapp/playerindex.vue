@@ -178,6 +178,7 @@ export default {
         this.showLuckChallenge = false;
         this.showHiLoChallenge = false;
         this.showMarketplace = false;
+        this.showLuckverse = false;
         this.showLKC = false;
         this.showLNFTS = false;
         this.showLDNA = true;
@@ -191,6 +192,7 @@ export default {
         this.showLuckChallenge = false;
         this.showHiLoChallenge = false;
         this.showMarketplace = false;
+        this.showLuckverse = false;
         this.showLDNA = false;
         this.showLNFTS = false;
         this.showLKC = true;
@@ -204,6 +206,7 @@ export default {
         this.showLuckChallenge = false;
         this.showHiLoChallenge = false;
         this.showMarketplace = false;
+        this.showLuckverse = false;
         this.showLDNA = false;
         this.showLKC = false;
         this.showLNFTS = true;
