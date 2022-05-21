@@ -1,23 +1,19 @@
 <template>
-  <div id="challenges" class="page">
+  <div id="luckchallenge" class="page">
     <div class="page-title">
-      <h1 ref="title">Challenges</h1>
+      <h1 ref="title">Luck Challenge</h1>
     </div>
     <div class="page-content" ref="content">
-      <h2>Try your luck at the Luck Challenge and win more LDNA!</h2>
-      <p>Choose a LDNA to use in the challenge and if you win you will receive another LDNA. If you loose the challenge the LDNA you chose will be burned making it available to be minted again.</p>
-      <h3>The HiLo Challenge is coming soon!</h3>
+      <h2>Coming Soon!</h2>
     </div>
     <div class="page-cta" ref="cta">
-      <button class="background-animation" @click="challenge">Luck Challenge</button>
-      <button class="background-animation" @click="challenge">HiLo Challenge</button>
     </div>
   </div>
 </template>
-The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
+
 <script>
 export default {
-  name: 'challenges',
+  name: 'luckchallenge',
   computed: {
     player() {
       return this.$store.state.player;
@@ -50,14 +46,6 @@ export default {
           }
         }
       }
-    },
-    challenge() {
-      if (event.target.innerText == "Luck Challenge") {
-        this.$emit("load", "luckchallenge");
-      }
-      if (event.target.innerText == "HiLo Challenge") {
-        this.$emit("load", "hilochallenge");
-      }
     }
   },
   mounted() {
@@ -68,17 +56,14 @@ export default {
 </script>
 
 <style scoped>
-.page-content {
+.page {
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
 }
-.page-content h2 {
-  font-size: 1.1em;
-  text-align: center;
-}
-.page-content h3 {
-  font-size: 1em;
-}
-.page-cta button {
-  border-radius: 50px;
+.page-content {
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 </style>

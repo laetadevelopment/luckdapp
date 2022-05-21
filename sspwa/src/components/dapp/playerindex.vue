@@ -4,6 +4,8 @@
     <main>
       <playerhome v-if="showPlayerHome" @load="load" />
       <challenges v-if="showChallenges" @load="load" />
+      <luckchallenge v-if="showLuckChallenge" @load="load" />
+      <hilochallenge v-if="showHiLoChallenge" @load="load" />
       <marketplace v-if="showMarketplace" @load="load" />
       <luckverse v-if="showLuckverse" @load="load" />
       <ldna v-if="showLDNA" @load="load" />
@@ -20,6 +22,8 @@
 import dappHeader from './dappHeader.vue'
 import playerhome from './views/playerhome.vue'
 import challenges from './views/challenges.vue'
+import luckchallenge from './views/challenges/luckchallenge.vue'
+import hilochallenge from './views/challenges/hilochallenge.vue'
 import marketplace from './views/marketplace.vue'
 import luckverse from './views/luckverse.vue'
 import ldna from './views/ldna.vue'
@@ -35,6 +39,8 @@ export default {
     dappHeader,
     playerhome,
     challenges,
+    luckchallenge,
+    hilochallenge,
     marketplace,
     luckverse,
     ldna,
@@ -53,6 +59,8 @@ export default {
     return {
       showPlayerHome: true,
       showChallenges: false,
+      showLuckChallenge: false,
+      showHiLoChallenge: false,
       showMarketplace: false,
       showLuckverse: false,
       showLDNA: false,
@@ -82,6 +90,8 @@ export default {
     load(page) {
       if (page == 'playerhome') {
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLuckverse = false;
         this.showLDNA = false;
@@ -94,6 +104,8 @@ export default {
       }
       if (page == 'challenges') {
         this.showPlayerHome = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLuckverse = false;
         this.showLDNA = false;
@@ -104,9 +116,39 @@ export default {
           this.showDAppMenu = false;
         }
       }
+      if (page == 'luckchallenge') {
+        this.showPlayerHome = false;
+        this.showChallenges = false;
+        this.showHiLoChallenge = false;
+        this.showMarketplace = false;
+        this.showLuckverse = false;
+        this.showLDNA = false;
+        this.showLKC = false;
+        this.showLNFTS = false;
+        this.showLuckChallenge = true;
+        if (this.showDAppMenu) {
+          this.showDAppMenu = false;
+        }
+      }
+      if (page == 'hilochallenge') {
+        this.showPlayerHome = false;
+        this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showMarketplace = false;
+        this.showLuckverse = false;
+        this.showLDNA = false;
+        this.showLKC = false;
+        this.showLNFTS = false;
+        this.showHiLoChallenge = true;
+        if (this.showDAppMenu) {
+          this.showDAppMenu = false;
+        }
+      }
       if (page == 'marketplace') {
         this.showPlayerHome = false;
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showLuckverse = false;
         this.showLDNA = false;
         this.showLKC = false;
@@ -119,6 +161,8 @@ export default {
       if (page == 'luckverse') {
         this.showPlayerHome = false;
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLuckverse = true;
         if (this.showDAppMenu) {
@@ -128,6 +172,8 @@ export default {
       if (page == 'ldna') {
         this.showPlayerHome = false;
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLKC = false;
         this.showLNFTS = false;
@@ -139,6 +185,8 @@ export default {
       if (page == 'lkc') {
         this.showPlayerHome = false;
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLDNA = false;
         this.showLNFTS = false;
@@ -150,6 +198,8 @@ export default {
       if (page == 'lnfts') {
         this.showPlayerHome = false;
         this.showChallenges = false;
+        this.showLuckChallenge = false;
+        this.showHiLoChallenge = false;
         this.showMarketplace = false;
         this.showLDNA = false;
         this.showLKC = false;
