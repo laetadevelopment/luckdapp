@@ -1,7 +1,7 @@
 <template>
   <header>
     <div id="menuButton">
-      <button class="background-animation" @click="toggleAppMenu">
+      <button @click="toggleAppMenu">
         <img alt="Toggle Menu" src="../../assets/luckdapp-icon.svg">
       </button>
     </div>
@@ -9,7 +9,7 @@
       <img @click="home" alt="SSPWA logo" src="../../assets/luckdapp-logo.png">
     </div>
     <div id="appBarButton">
-      <button class="background-animation" @click="toggleAppBar">
+      <button @click="toggleAppBar">
         <img alt="Toggle App Bar" src="../../assets/github-mark.svg">
       </button>
     </div>
@@ -50,10 +50,15 @@ header button {
   width: 100%;
   height: 100%;
   padding: 0;
+  background: rgba(51,148,64,95%);
+  border-color: rgb(51,148,64);
   border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+header button:hover {
+  background: rgba(51,148,64,75%);
 }
 header button img {
   width: 25px;
