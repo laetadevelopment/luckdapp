@@ -53,7 +53,7 @@ export default {
             }
           }
         }
-      } 
+      }
     },
     challenge() {
       if (event.target.innerText == "Luck Challenge") {
