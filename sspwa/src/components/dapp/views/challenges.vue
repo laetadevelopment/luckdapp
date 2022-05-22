@@ -14,7 +14,7 @@
     </div>
   </div>
 </template>
-The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
+
 <script>
 export default {
   name: 'challenges',
@@ -26,30 +26,34 @@ export default {
   methods: {
     // TODO: refactor this method to be dynamic and enlarge font as well
     overflow() {
-      if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
-        this.$refs.title.style.fontSize = "4vw";
+      if (this.$refs.title) {
         if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
-          this.$refs.title.style.fontSize = "3vw";
+          this.$refs.title.style.fontSize = "4vw";
           if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
-            this.$refs.title.style.fontSize = "2vw";
+            this.$refs.title.style.fontSize = "3vw";
             if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
-              this.$refs.title.style.fontSize = "1vw";
+              this.$refs.title.style.fontSize = "2vw";
+              if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
+                this.$refs.title.style.fontSize = "1vw";
+              }
             }
           }
         }
       }
-      if (this.$refs.content.scrollHeight > this.$refs.content.clientHeight) {
-        this.$refs.content.style.fontSize = ".8em";
+      if (this.$refs.content) {
         if (this.$refs.content.scrollHeight > this.$refs.content.clientHeight) {
-          this.$refs.content.style.fontSize = ".7em";
+          this.$refs.content.style.fontSize = ".8em";
           if (this.$refs.content.scrollHeight > this.$refs.content.clientHeight) {
-            this.$refs.content.style.fontSize = ".6em";
+            this.$refs.content.style.fontSize = ".7em";
             if (this.$refs.content.scrollHeight > this.$refs.content.clientHeight) {
-              this.$refs.content.style.fontSize = ".5em";
+              this.$refs.content.style.fontSize = ".6em";
+              if (this.$refs.content.scrollHeight > this.$refs.content.clientHeight) {
+                this.$refs.content.style.fontSize = ".5em";
+              }
             }
           }
         }
-      }
+      } 
     },
     challenge() {
       if (event.target.innerText == "Luck Challenge") {
@@ -62,6 +66,7 @@ export default {
   },
   mounted() {
     this.overflow();
+    window.addEventListener("resize", this.overflow);
   }
 }
 </script>
