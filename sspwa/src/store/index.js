@@ -22,7 +22,8 @@ export default createStore({
     },
     player: {
       name: null,
-      ldna: null
+      ldna: null,
+      ldnaDetails: []
     }
   },
   getters: {
@@ -39,6 +40,12 @@ export default createStore({
     updatePlayer (state, payload) {
       state.player.name = payload.name;
       state.player.ldna = payload.ldna;
+    },
+    updatePlayerLDNA (state, payload) {
+      let exists = state.player.ldnaDetails.findIndex(object => object.ldna === payload.ldna);
+      if (exists === -1) {
+        state.player.ldnaDetails.push(payload);
+      }
     }
   },
   actions: {
@@ -85,6 +92,23 @@ export default createStore({
       }).catch(e => {
         console.error('Error connecting MetaMask:', e);
       })
+    },
+    playerLDNA (context) {
+      LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+      let ldna = context.state.player.ldna.split(',');
+      ldna.forEach(getLDNA);
+      function getLDNA(item) {
+        LuckDApp.deployed().then((instance) => instance.luckDNA.call(item)).then((result) => {
+          let ldnaDetail = {
+            ldna: item,
+            r: result.r,
+            g: result.g,
+            b: result.b,
+            a: result.a
+          };
+          context.commit('updatePlayerLDNA', ldnaDetail);
+        });
+      }
     },
     switchNetwork (context) {
       context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {
