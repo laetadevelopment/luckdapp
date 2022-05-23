@@ -55,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  width: 100%;
+  text-align: center;
+}
 .playerLDNA {
   width: 100%;
   display: flex;
