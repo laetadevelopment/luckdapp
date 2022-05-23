@@ -48,7 +48,6 @@ export default createStore({
       }
     },
     removePlayerLDNA (state, payload) {
-      // FIX: this is not always removing the LDNA that was burned
       state.player.ldnaDetails.splice(state.player.ldnaDetails.findIndex(object => object.ldna === payload), 1);
     }
   },

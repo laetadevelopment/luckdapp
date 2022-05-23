@@ -57,6 +57,7 @@ export default {
 <style scoped>
 h2 {
   width: 100%;
+  font-size: 1.5em;
   text-align: center;
 }
 .playerLDNA {
