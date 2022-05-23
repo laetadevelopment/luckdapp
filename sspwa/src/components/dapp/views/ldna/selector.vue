@@ -3,9 +3,7 @@
   <p>Choose the LDNA you would like to use in the challenge. Once you have chosen a LDNA you can start the challenge by selecting the Let's go! button in the bottom right.</p>
   <div class="playerLDNA">
     <div v-for="ldna in playerLDNA">
-      <button @click="select(ldna)">
-        <img alt="LuckDNA Token" src="../../../../assets/luckdna-token.svg" />
-      </button>
+      <img alt="LuckDNA Token" src="../../../../assets/luckdna-token.svg" @click="select(ldna)">
     </div>
   </div>
 </template>
@@ -27,26 +25,32 @@ export default {
   },
   methods: {
     select(ldna) {
-      this.selected = ldna.ldna;
-      this.$emit("selected", this.selected);
-      // let color = "rgba(" + ldna.r + "," + ldna.g + "," + ldna.b + "," + ldna.a + "%)";
-      // event.target.style = "background: " + color + ";";
+      if (event.target.classList.contains("selected")) {
+        event.target.style = "background: none;";
+        event.target.classList.toggle("selected");
+        this.selected = null;
+        this.$emit("selected", this.selected);
+      } else {
+        let color = "rgba(" + ldna.r + "," + ldna.g + "," + ldna.b + "," + ldna.a + "%)";
+        event.target.style = "background: " + color + ";";
+        event.target.classList.toggle("selected");
+        this.selected = ldna.ldna;
+        this.$emit("selected", this.selected);
+      }
     },
   },
 }
 </script>
 
 <style scoped>
-.playerLDNA button {
+.playerLDNA {
+  display: flex;
+  justify-content: space-evenly;
+}
+.playerLDNA img {
   width: 50px;
   height: 50px;
   border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.playerLDNA button img {
-  width: 30px;
-  height: 30px;
+  cursor: pointer;
 }
 </style>
