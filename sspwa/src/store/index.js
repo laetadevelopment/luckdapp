@@ -111,10 +111,34 @@ export default createStore({
       }
     },
     startLuckChallenge (context, payload) {
-      LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
-      LuckDApp.deployed().then((instance) => instance.luckChallenge(payload)).then((result) => {
-        console.log(result.toNumber());
-      });
+      context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
+        context.state.metamask.connected = true;
+        context.state.metamask.address = result[0];
+        context.state.metamask.network = context.state.metamask.web3.currentProvider.networkVersion;
+        LuckDApp.defaults({
+          from: result[0]
+        });
+        LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+        LuckDApp.deployed().then((instance) => instance.luckChallenge(payload)).then((result) => {
+          LuckDApp.deployed().then((instance) => instance.getPastEvents('LuckChallengeResults')).then((results) => {
+            if (results[0].returnValues.results) {
+              console.log('win', results[0].returnValues.ldna);
+              context.commit('updatePlayer', {
+                name: context.state.player.name,
+                ldna: results[0].returnValues.ldna.toString()
+              });
+            } else {
+              console.log('loss', results[0].returnValues.ldna);
+              context.commit('updatePlayer', {
+                name: context.state.player.name,
+                ldna: results[0].returnValues.ldna.toString()
+              });
+            }
+          });
+        });
+      }).catch(e => {
+        console.error('Error connecting MetaMask:', e);
+      })
     },
     switchNetwork (context) {
       context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {
