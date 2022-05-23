@@ -110,6 +110,12 @@ export default createStore({
         });
       }
     },
+    startLuckChallenge (context, payload) {
+      LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+      LuckDApp.deployed().then((instance) => instance.luckChallenge(payload)).then((result) => {
+        console.log(result.toNumber());
+      });
+    },
     switchNetwork (context) {
       context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {
         context.state.metamask.network = 5777;

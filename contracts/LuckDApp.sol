@@ -53,19 +53,24 @@ contract LuckDApp is Ownable {
     return random;
   }
 
+  function newPlayer(string memory _name) public {
+    require(bytes(playerToName[msg.sender]).length == 0);
+    playerToName[msg.sender] = _name;
+    _createLdna(msg.sender);
+    _createLdna(address(this));
+  }
+
+  function luckChallenge(uint _ldna) public pure returns (uint) {
+    uint ldna = _ldna;
+    return ldna;
+  }
+
   function ldnaExists(string memory _r, string memory _g, string memory _b, string memory _a) public view returns (bool) {
     if (hashToLDNA[keccak256(abi.encodePacked(_r, _g, _b, _a))]) {
       return true;
     } else {
       return false;
     }
-  }
-
-  function newPlayer(string memory _name) public {
-    require(bytes(playerToName[msg.sender]).length == 0);
-    playerToName[msg.sender] = _name;
-    _createLdna(msg.sender);
-    _createLdna(address(this));
   }
 
   function playerLDNA(address _owner) external view returns(uint[] memory) {

@@ -84,12 +84,21 @@ export default {
     },
     selected(ldna) {
       this.selectedLDNA = ldna;
+      if (this.$refs.content.querySelectorAll(".warning").length > 0) {
+        this.$refs.content.querySelectorAll(".warning").forEach(el => el.remove());
+      }
     },
     start() {
       if (this.selectedLDNA) {
-        console.log("Let's go!", this.selectedLDNA);
+        this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
       } else {
-        console.log("Select a LDNA first!");
+        if (this.$refs.content.querySelectorAll(".warning").length == 0) {
+          let div = document.createElement("div");
+          div.innerText = "Choose a LuckDNA Token for the challenge.";
+          div.style = "position: absolute; bottom: 0; color: rgb(255,150,102); font-size: .8em; font-weight: bold;";
+          div.classList.toggle("warning");
+          this.$refs.content.append(div);
+        }
       }
     }
   },
@@ -105,6 +114,7 @@ export default {
   width: 100%;
 }
 .page-content {
+  position: relative;
   justify-content: center;
 }
 .page-content h2 {
