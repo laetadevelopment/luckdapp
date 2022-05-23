@@ -46,6 +46,9 @@ export default createStore({
       if (exists === -1) {
         state.player.ldnaDetails.push(payload);
       }
+    },
+    removePlayerLDNA (state, payload) {
+      state.player.ldnaDetails.splice(state.player.ldnaDetails.findIndex(object => object.ldna === payload), 1);
     }
   },
   actions: {
@@ -122,23 +125,46 @@ export default createStore({
         LuckDApp.deployed().then((instance) => instance.luckChallenge(payload)).then((result) => {
           LuckDApp.deployed().then((instance) => instance.getPastEvents('LuckChallengeResults')).then((results) => {
             if (results[0].returnValues.results) {
-              console.log('win', results[0].returnValues.ldna);
               context.commit('updatePlayer', {
                 name: context.state.player.name,
                 ldna: results[0].returnValues.ldna.toString()
               });
             } else {
-              console.log('loss', results[0].returnValues.ldna);
               context.commit('updatePlayer', {
                 name: context.state.player.name,
                 ldna: results[0].returnValues.ldna.toString()
               });
+              context.commit('removePlayerLDNA', payload);
             }
           });
         });
       }).catch(e => {
         console.error('Error connecting MetaMask:', e);
       })
+    },
+    getLDNA (context) {
+      context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
+        context.state.metamask.connected = true;
+        context.state.metamask.address = result[0];
+        context.state.metamask.network = context.state.metamask.web3.currentProvider.networkVersion;
+        LuckDApp.defaults({
+          from: result[0],
+          value: 5000000000000000
+        });
+        LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+        LuckDApp.deployed().then((instance) => instance.getLDNA()).then((result) => {
+          LuckDApp.defaults({
+            from: context.state.metamask.address,
+            value: 0
+          });
+          LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
+            context.commit('updatePlayer', {
+              name: context.state.player.name,
+              ldna: ldna.toString()
+            });
+          });
+        });
+      });
     },
     switchNetwork (context) {
       context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {

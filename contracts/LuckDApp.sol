@@ -11,6 +11,7 @@ contract LuckDApp is Ownable {
   event LuckChallengeResults(bool results, uint random, uint[] ldna);
 
   uint nonce = 0;
+  uint ldnaCost = 0.005 ether;
 
   struct LDNA {
     string r;
@@ -26,18 +27,28 @@ contract LuckDApp is Ownable {
   mapping (address => uint) ldnaCount;
   mapping (bytes32 => bool) hashToLDNA;
 
+  modifier onlyOwnerOf(uint _ldna) {
+    require(msg.sender == ldnaToOwner[_ldna]);
+    _;
+  }
+
   function _createLDNA(address _owner) internal {
     LDNA memory ldna = _generateRandomLDNA(_owner);
     luckDNA.push(ldna);
-    uint id = luckDNA.length - 1;
+    uint id = luckDNA.length.sub(1);
     ldnaToOwner[id] = _owner;
     ldnaCount[_owner] = ldnaCount[_owner].add(1);
     bytes32 hash = keccak256(abi.encodePacked(ldna.r, ldna.g, ldna.b, ldna.a));
     hashToLDNA[hash] = true;
   }
 
-  function _burnLDNA(uint _ldna) internal pure returns (uint) {
-    return _ldna;
+  function _burnLDNA(uint _ldna, address _owner) internal {
+    LDNA memory ldna = luckDNA[_ldna];
+    bytes32 hash = keccak256(abi.encodePacked(ldna.r, ldna.g, ldna.b, ldna.a));
+    hashToLDNA[hash] = false;
+    ldnaCount[_owner] = ldnaCount[_owner].sub(1);
+    delete ldnaToOwner[_ldna];
+    delete luckDNA[_ldna];
   }
 
   function _generateRandomLDNA(address _owner) internal returns (LDNA memory _ldna) {
@@ -66,7 +77,7 @@ contract LuckDApp is Ownable {
       _createLDNA(msg.sender);
       results = true;
     } else {
-      _burnLDNA(_ldna);
+      _burnLDNA(_ldna, msg.sender);
       results = false;
     }
     uint[] memory ldna = playerLDNA(msg.sender);
@@ -80,7 +91,7 @@ contract LuckDApp is Ownable {
     _createLDNA(address(this));
   }
 
-  function luckChallenge(uint _ldna) public {
+  function luckChallenge(uint _ldna) public onlyOwnerOf(_ldna) {
     _runLuckChallenge(_ldna);
   }
 
@@ -102,5 +113,19 @@ contract LuckDApp is Ownable {
       }
     }
     return ldna;
+  }
+
+  function withdraw() external onlyOwner {
+    address payable _owner = payable(owner());
+    _owner.transfer(address(this).balance);
+  }
+
+  function setCost(uint _cost) external onlyOwner {
+    ldnaCost = _cost;
+  }
+
+  function getLDNA() external payable {
+    require(msg.value == ldnaCost && ldnaCount[msg.sender] == 0);
+    _createLDNA(msg.sender);
   }
 }

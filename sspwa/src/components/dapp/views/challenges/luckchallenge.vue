@@ -14,7 +14,8 @@
       <button v-if="!chooseLDNA" class="background-animation" @click="challenges">Challenges</button>
       <button v-if="chooseLDNA" class="background-animation" @click="challenge">Luck Challenge</button>
       <button v-if="!chooseLDNA" class="background-animation" @click="choose">Choose LDNA</button>
-      <button v-if="chooseLDNA" class="background-animation" @click="start">Let's go!</button>
+      <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
+      <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
     </div>
   </div>
 </template>
@@ -100,6 +101,9 @@ export default {
           this.$refs.content.append(div);
         }
       }
+    },
+    get() {
+      this.$store.dispatch("getLDNA");
     }
   },
   mounted() {
