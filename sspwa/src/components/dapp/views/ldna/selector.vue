@@ -2,7 +2,7 @@
   <h2>LDNA Selector</h2>
   <p>Choose the LDNA you would like to use in the challenge. Once you have chosen a LDNA you can start the challenge by selecting the Let's go! button in the bottom right.</p>
   <div class="playerLDNA">
-    <div v-for="ldna in playerLDNA" class="ldna">
+    <div v-for="ldna in playerLDNA" class="ldna" ref="token">
       <img alt="LuckDNA Token" src="../../../../assets/luckdna-token.svg" @click="select(ldna)" @load="set(ldna)">
     </div>
   </div>
@@ -30,6 +30,12 @@ export default {
         this.selected = null;
         this.$emit("selected", this.selected);
       } else {
+        this.$refs.token.forEach(unselect);
+        function unselect(item) {
+          if (item.children[0].classList.contains("selected")) {
+            item.children[0].classList.toggle("selected");
+          }
+        }
         event.target.classList.toggle("selected");
         this.selected = ldna.ldna;
         this.$emit("selected", this.selected);
