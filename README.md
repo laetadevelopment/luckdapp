@@ -1,5 +1,5 @@
 # LuckD.App
- [LuckD.App](https://luckd.app "LuckD.App")
+ [LuckD.App](https://luckd.app "LuckD.App") is currently deployed to the Ropsten Testnet at [0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54](https://ropsten.etherscan.io/address/0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54 "View on Etherscan"). Go to the [MetaMask Ether Faucet](https://faucet.metamask.io/ "MetaMask Ether Faucet") to get ETH for your wallet.
 
 
 ## Mission
@@ -10,7 +10,7 @@
 
 ## Summary
 
-LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA Tokens (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
+LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
 
 Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
 
@@ -46,7 +46,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v1.1 - Phase One
 
-##### v1.1.1 - ~~create functionality for LDNA (LuckDNA Tokens) in DApp~~
+##### v1.1.1 - ~~create functionality for LDNA (LuckDNA) in DApp~~
 
 ##### v1.1.2 - ~~create functionality for new player in DApp and connect to new create player view in SSPWA~~
 
@@ -54,7 +54,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 ##### v1.1.4 - ~~create new challenges view in SSPWA~~
 
-##### v1.1.5 - create functionality for Luck Challenge in DApp and connect to new luck challenge view in SSPWA
+##### v1.1.5 - ~~create functionality for Luck Challenge in DApp and connect to new luck challenge view in SSPWA~~
 
 #### v1.2 - Phase Two
 
