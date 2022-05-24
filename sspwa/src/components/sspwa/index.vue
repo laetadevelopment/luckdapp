@@ -82,6 +82,8 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  background: rgb(0,0,0);
+  color: rgb(255,255,255);
   font-family: lato, sans-serif;
   font-weight: 400;
   font-style: normal;

@@ -85,19 +85,19 @@ h2 {
 }
 @keyframes shadow {
   0% {
-    box-shadow: 0px 0px 5px 3px rgba(51,148,64,100%);
+    box-shadow: 0px 0px 7px 5px rgba(51,148,64,100%);
   }
   25% {
-    box-shadow: 0px 0px 5px 3px rgba(186,220,221,100%);
+    box-shadow: 0px 0px 7px 5px rgba(186,220,221,100%);
   }
   50% {
-    box-shadow: 0px 0px 5px 3px rgba(255,150,102,100%);
+    box-shadow: 0px 0px 7px 5px rgba(255,150,102,100%);
   }
   75% {
-    box-shadow: 0px 0px 5px 3px rgba(26,117,133,100%);
+    box-shadow: 0px 0px 7px 5px rgba(26,117,133,100%);
   }
   100% {
-    box-shadow: 0px 0px 5px 3px rgba(23,76,79,100%);
+    box-shadow: 0px 0px 7px 5px rgba(23,76,79,100%);
   }
 }
 </style>
