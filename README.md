@@ -58,7 +58,7 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v1.2 - Phase Two
 
-##### v1.2.1 - add missing elements to SSPWA and update UI/UX
+##### v1.2.1 - ~~add missing elements to SSPWA and update UI/UX~~
 
 ##### v1.2.2 - refactor smart contract for DApp and create tests
 
