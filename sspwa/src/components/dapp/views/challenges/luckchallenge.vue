@@ -95,7 +95,7 @@ export default {
       } else {
         if (this.$refs.content.querySelectorAll(".warning").length == 0) {
           let div = document.createElement("div");
-          div.innerText = "Choose a LuckDNA Token for the challenge.";
+          div.innerText = "Choose a LDNA for the challenge.";
           div.style = "position: absolute; bottom: 0; color: rgb(255,150,102); font-size: .8em; font-weight: bold;";
           div.classList.toggle("warning");
           this.$refs.content.append(div);

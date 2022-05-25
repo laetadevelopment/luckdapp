@@ -167,8 +167,8 @@ export default createStore({
       });
     },
     switchNetwork (context) {
-      context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {
-        context.state.metamask.network = 5777;
+      context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x3' }] }).then(result => {
+        context.state.metamask.network = 3;
       }).catch(e => {
         console.error('Error changing network:', e);
       })

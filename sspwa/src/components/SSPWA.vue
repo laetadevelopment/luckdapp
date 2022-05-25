@@ -8,7 +8,7 @@
             <h2>Do you feel lucky?</h2>
             <button @click="load">Learn More</button>
           </div>
-          <p>New players are given their first LuckDNA Token (LDNA) so they can try their luck on LuckD.App!</p>
+          <p>New players are given their first LuckDNA token so they can try their luck on LuckD.App!</p>
         </div>
         <video-background 
           v-if="showVideoBackground"

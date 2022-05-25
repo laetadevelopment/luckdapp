@@ -36,7 +36,7 @@ export default {
     },
     create() {
       if (this.name) {
-        if (this.metamask.web3.currentProvider.networkVersion == 5777) {
+        if (this.metamask.web3.currentProvider.networkVersion == 3) {
           this.$store.dispatch({
             type: 'createPlayer',
             name: this.name
