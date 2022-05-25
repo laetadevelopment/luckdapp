@@ -4,9 +4,11 @@
       <h1 ref="title">HiLo Challenge</h1>
     </div>
     <div class="page-content" ref="content">
-      <h2>Coming Soon!</h2>
+      <h2>The ability to test your luck against other Luck.DApp players is coming. Check back soon!</h2>
     </div>
     <div class="page-cta" ref="cta">
+      <button class="background-animation" @click="challenges">Challenges</button>
+      <button class="background-animation" @click="challenge">Luck Challenge</button>
     </div>
   </div>
 </template>
@@ -50,6 +52,12 @@ export default {
           }
         }
       }
+    },
+    challenges() {
+      this.$emit("load", "challenges");
+    },
+    challenge() {
+      this.$emit("load", "luckchallenge");
     }
   },
   mounted() {
@@ -60,14 +68,18 @@ export default {
 </script>
 
 <style scoped>
-.page {
+.page, .page-title {
   width: 100%;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
 }
 .page-content {
-  flex-wrap: nowrap;
+  position: relative;
   justify-content: center;
+}
+.page-content h2 {
+  font-size: 1.2em;
+  text-align: center;
+}
+.page-cta button {
+  border-radius: 50px;
 }
 </style>

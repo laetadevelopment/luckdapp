@@ -13,6 +13,7 @@
     <div class="page-cta" ref="cta">
       <button v-if="!chooseLDNA" class="background-animation" @click="challenges">Challenges</button>
       <button v-if="chooseLDNA" class="background-animation" @click="challenge">Luck Challenge</button>
+      <button v-if="chooseLDNA" id="refresh" class="background-animation" @click="refresh"><img alt="Refresh LDNA" src="../../../../assets/ldna-refresh.svg"></button>
       <button v-if="!chooseLDNA" class="background-animation" @click="choose">Choose LDNA</button>
       <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
       <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
@@ -29,6 +30,9 @@ export default {
     ldnaselector
   },
   computed: {
+    metamask() {
+      return this.$store.state.metamask;
+    },
     player() {
       return this.$store.state.player;
     }
@@ -83,6 +87,13 @@ export default {
       this.showChallenge = false;
       this.chooseLDNA = true;
     },
+    refresh() {
+      if (this.metamask.web3.currentProvider.networkVersion == 3) {
+        this.$store.dispatch("refreshLDNA");
+      } else {
+        this.$store.dispatch('switchNetwork');
+      }
+    },
     selected(ldna) {
       this.selectedLDNA = ldna;
       if (this.$refs.content.querySelectorAll(".warning").length > 0) {
@@ -91,11 +102,15 @@ export default {
     },
     start() {
       if (this.selectedLDNA) {
-        this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
+        if (this.metamask.web3.currentProvider.networkVersion == 3) {
+          this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
+        } else {
+          this.$store.dispatch('switchNetwork');
+        }
       } else {
         if (this.$refs.content.querySelectorAll(".warning").length == 0) {
           let div = document.createElement("div");
-          div.innerText = "Choose a LuckDNA Token for the challenge.";
+          div.innerText = "Choose a LDNA for the challenge.";
           div.style = "position: absolute; bottom: 0; color: rgb(255,150,102); font-size: .8em; font-weight: bold;";
           div.classList.toggle("warning");
           this.$refs.content.append(div);
@@ -126,6 +141,16 @@ export default {
   text-align: center;
 }
 .page-cta button {
+  max-width: 40%;
   border-radius: 50px;
+}
+.page-cta #refresh {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.page-cta #refresh img {
+  width: 30px;
+  height: 30px;
 }
 </style>

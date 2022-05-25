@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style>
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
 #index {
   width: 100%;
   height: 100%;

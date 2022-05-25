@@ -46,9 +46,6 @@ export default createStore({
       if (exists === -1) {
         state.player.ldnaDetails.push(payload);
       }
-    },
-    removePlayerLDNA (state, payload) {
-      state.player.ldnaDetails.splice(state.player.ldnaDetails.findIndex(object => object.ldna === payload), 1);
     }
   },
   actions: {
@@ -97,8 +94,9 @@ export default createStore({
       })
     },
     playerLDNA (context) {
-      LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
       let ldna = context.state.player.ldna.split(',');
+      LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+      context.state.player.ldnaDetails = [];
       ldna.forEach(getLDNA);
       function getLDNA(item) {
         LuckDApp.deployed().then((instance) => instance.luckDNA.call(item)).then((result) => {
@@ -134,7 +132,6 @@ export default createStore({
                 name: context.state.player.name,
                 ldna: results[0].returnValues.ldna.toString()
               });
-              context.commit('removePlayerLDNA', payload);
             }
           });
         });
@@ -166,9 +163,25 @@ export default createStore({
         });
       });
     },
+    refreshLDNA (context) {
+      context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
+        context.state.metamask.connected = true;
+        context.state.metamask.address = result[0];
+        context.state.metamask.network = context.state.metamask.web3.currentProvider.networkVersion;
+        LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+        LuckDApp.deployed().then((instance) => instance.playerLDNA.call(result[0])).then((ldna) => {
+          context.commit('updatePlayer', {
+            name: context.state.player.name,
+            ldna: ldna.toString()
+          });
+        });
+      }).catch(e => {
+        console.error('Error connecting MetaMask:', e);
+      })
+    },
     switchNetwork (context) {
-      context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x539' }] }).then(result => {
-        context.state.metamask.network = 5777;
+      context.state.metamask.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x3' }] }).then(result => {
+        context.state.metamask.network = 3;
       }).catch(e => {
         console.error('Error changing network:', e);
       })
