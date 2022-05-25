@@ -13,7 +13,6 @@
     <div class="page-cta" ref="cta">
       <button v-if="!chooseLDNA" class="background-animation" @click="challenges">Challenges</button>
       <button v-if="chooseLDNA" class="background-animation" @click="challenge">Luck Challenge</button>
-      <button v-if="chooseLDNA" class="background-animation" @click="refresh">Refresh LDNA</button>
       <button v-if="!chooseLDNA" class="background-animation" @click="choose">Choose LDNA</button>
       <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
       <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
@@ -142,7 +141,7 @@ export default {
   text-align: center;
 }
 .page-cta button {
-  max-width: 30%;
+  max-width: 40%;
   border-radius: 50px;
 }
 </style>

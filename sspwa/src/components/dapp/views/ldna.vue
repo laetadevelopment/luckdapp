@@ -21,7 +21,7 @@
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="home">Home</button>
-      <button class="background-animation" @click="refresh">Refresh LDNA</button>
+      <button id="refresh" class="background-animation" @click="refresh"><img alt="Refresh LDNA" src="../../../assets/ldna-refresh.svg"></button>
       <button v-if="player.ldna" class="background-animation" @click="challenge">Luck Challenge</button>
       <button v-if="!player.ldna" class="background-animation" @click="get">Get LDNA</button>
     </div>
@@ -302,7 +302,16 @@ export default {
   font-weight: bold;
 }
 .page-cta button {
-  max-width: 30%;
+  max-width: 40%;
   border-radius: 50px;
+}
+.page-cta #refresh {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+.page-cta #refresh img {
+  width: 30px;
+  height: 30px;
 }
 </style>
