@@ -86,6 +86,7 @@ export default {
     },
     refresh() {
       if (this.metamask.web3.currentProvider.networkVersion == 3) {
+        this.showDetails = false;
         this.$store.dispatch("refreshLDNA");
       } else {
         this.$store.dispatch('switchNetwork');

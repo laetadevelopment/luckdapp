@@ -103,7 +103,6 @@ export default {
     start() {
       if (this.selectedLDNA) {
         if (this.metamask.web3.currentProvider.networkVersion == 3) {
-          event.target.disabled = true;
           this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
         } else {
           this.$store.dispatch('switchNetwork');
