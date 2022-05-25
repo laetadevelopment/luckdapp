@@ -6,6 +6,11 @@ const ropstenurl = process.env.ROPSTEN_RPC_URL
 
 module.exports = {
   networks: {
+    test: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "5777"
+    },
     ropsten: {
       provider: () => {
         return new HDWalletProvider(ropstenkey, ropstenurl)
