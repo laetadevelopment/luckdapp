@@ -58,35 +58,41 @@ Read the architecture below to learn about what features are planned for the fut
 
 #### v1.2 - Phase Two
 
-##### v1.2.1 - create functionality for player management in DApp and connect to new player management view in SSPWA
+##### v1.2.1 - add missing elements to SSPWA and update UI/UX
 
-##### v1.2.2 - create functionality for player to convert LDNA to LKC (Luckcoins) and connect to new convert view in SSPWA
+##### v1.2.2 - refactor smart contract for DApp and create tests
 
-##### v1.2.3 - create functionality for HiLo Challenge in DApp and connect to new hilo challenge view in SSPWA
+##### v1.2.3 - refactor SSPWA and create tests
 
-#### v1.3 - Phase Three
+#### v1.2 - Phase Three
 
-##### v1.3.1 - create initial functionality for DAM (DApp Manager) in DApp and connect to new PWAD (progressive web app dashboard)
+##### v1.3.1 - create functionality for player management in DApp and connect to new player management view in SSPWA
 
-##### v1.3.2 - connect new PWAD (LuckDAM) to DApp
+##### v1.3.2 - create functionality for player to convert LDNA to LKC (Luckcoins) and connect to new convert view in SSPWA
 
-##### v1.3.3 - create functionality for minting LNFTS (LuckNFTs) in DApp and connect to LuckDAM
+##### v1.3.3 - create functionality for HiLo Challenge in DApp and connect to new hilo challenge view in SSPWA
 
-##### v1.3.4 - create functionality for LuckNFTs Marketplace in DApp and connect to SSPWA
+#### v1.3 - Phase Four
 
-##### v1.3.5 - create functionality for player avatars in DApp and connect to SSPWA
+##### v1.4.1 - create initial functionality for DAM (DApp Manager) in DApp and connect to new PWAD (progressive web app dashboard)
 
-#### v1.4 - Phase Four
+##### v1.4.2 - connect new PWAD (LuckDAM) to DApp
 
-##### v1.4.1 - create LKC ICO on crypto exchange
+##### v1.4.3 - create functionality for minting LNFTS (LuckNFTs) in DApp and connect to LuckDAM
 
-##### v1.4.2 - add LNFTS trading on NFT exchange
+##### v1.4.4 - create functionality for LuckNFTs Marketplace in DApp and connect to SSPWA
+
+##### v1.4.5 - create functionality for player avatars in DApp and connect to SSPWA
 
 #### v1.5 - Phase Five
 
-##### v1.5.1 - create functionality for creating LNFTS in DApp and connect to SSPWA
+##### v1.5.1 - create LKC ICO on crypto exchange
 
-##### v1.5.2 - create functionality for creating challenges in DApp and connect to SSPWA
+##### v1.5.2 - add LNFTS trading on NFT exchange
+
+##### v1.5.3 - create functionality for creating LNFTS in DApp and connect to SSPWA
+
+##### v1.5.4 - create functionality for creating challenges in DApp and connect to SSPWA
 
 
 ### Version Two

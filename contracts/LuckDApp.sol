@@ -127,5 +127,6 @@ contract LuckDApp is Ownable {
   function getLDNA() external payable {
     require(msg.value == ldnaCost && ldnaCount[msg.sender] == 0);
     _createLDNA(msg.sender);
+    _createLDNA(address(this));
   }
 }
