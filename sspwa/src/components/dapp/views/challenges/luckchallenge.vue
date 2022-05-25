@@ -13,6 +13,7 @@
     <div class="page-cta" ref="cta">
       <button v-if="!chooseLDNA" class="background-animation" @click="challenges">Challenges</button>
       <button v-if="chooseLDNA" class="background-animation" @click="challenge">Luck Challenge</button>
+      <button v-if="chooseLDNA" class="background-animation" @click="refresh">Refresh LDNA</button>
       <button v-if="!chooseLDNA" class="background-animation" @click="choose">Choose LDNA</button>
       <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
       <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
@@ -29,6 +30,9 @@ export default {
     ldnaselector
   },
   computed: {
+    metamask() {
+      return this.$store.state.metamask;
+    },
     player() {
       return this.$store.state.player;
     }
@@ -83,6 +87,13 @@ export default {
       this.showChallenge = false;
       this.chooseLDNA = true;
     },
+    refresh() {
+      if (this.metamask.web3.currentProvider.networkVersion == 3) {
+        this.$store.dispatch("refreshLDNA");
+      } else {
+        this.$store.dispatch('switchNetwork');
+      }
+    },
     selected(ldna) {
       this.selectedLDNA = ldna;
       if (this.$refs.content.querySelectorAll(".warning").length > 0) {
@@ -91,7 +102,12 @@ export default {
     },
     start() {
       if (this.selectedLDNA) {
-        this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
+        if (this.metamask.web3.currentProvider.networkVersion == 3) {
+          event.target.disabled = true;
+          this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
+        } else {
+          this.$store.dispatch('switchNetwork');
+        }
       } else {
         if (this.$refs.content.querySelectorAll(".warning").length == 0) {
           let div = document.createElement("div");
@@ -126,6 +142,7 @@ export default {
   text-align: center;
 }
 .page-cta button {
+  max-width: 30%;
   border-radius: 50px;
 }
 </style>

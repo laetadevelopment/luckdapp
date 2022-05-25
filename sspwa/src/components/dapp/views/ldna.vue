@@ -21,6 +21,7 @@
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="home">Home</button>
+      <button class="background-animation" @click="refresh">Refresh LDNA</button>
       <button v-if="player.ldna" class="background-animation" @click="challenge">Luck Challenge</button>
       <button v-if="!player.ldna" class="background-animation" @click="get">Get LDNA</button>
     </div>
@@ -31,6 +32,9 @@
 export default {
   name: 'ldna',
   computed: {
+    metamask() {
+      return this.$store.state.metamask;
+    },
     player() {
       return this.$store.state.player;
     },
@@ -78,6 +82,13 @@ export default {
             }
           }
         }
+      }
+    },
+    refresh() {
+      if (this.metamask.web3.currentProvider.networkVersion == 3) {
+        this.$store.dispatch("refreshLDNA");
+      } else {
+        this.$store.dispatch('switchNetwork');
       }
     },
     select(ldna) {
@@ -291,6 +302,7 @@ export default {
   font-weight: bold;
 }
 .page-cta button {
+  max-width: 30%;
   border-radius: 50px;
 }
 </style>

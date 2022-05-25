@@ -37,6 +37,7 @@ export default {
     create() {
       if (this.name) {
         if (this.metamask.web3.currentProvider.networkVersion == 3) {
+          event.target.disabled = true;
           this.$store.dispatch({
             type: 'createPlayer',
             name: this.name
