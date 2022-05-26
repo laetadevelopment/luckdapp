@@ -85,7 +85,7 @@ export default {
       }
     },
     refresh() {
-      if (this.metamask.web3.currentProvider.networkVersion == 3) {
+      if (this.metamask.web3.currentProvider.networkVersion == 42) {
         this.showDetails = false;
         this.$store.dispatch("refreshLDNA");
       } else {

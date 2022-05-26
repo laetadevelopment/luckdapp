@@ -1,5 +1,5 @@
 # LuckD.App
- [LuckD.App](https://luckd.app "LuckD.App") is currently deployed to the Ropsten Testnet at [0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54](https://ropsten.etherscan.io/address/0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54 "View on Etherscan"). Go to the [MetaMask Ether Faucet](https://faucet.metamask.io/ "MetaMask Ether Faucet") to get ETH for your wallet.
+ [LuckD.App](https://luckd.app "LuckD.App") is currently deployed to the Ropsten Testnet at [0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54](https://ropsten.etherscan.io/address/0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54 "View on Etherscan") and to the Kovan Testnet at [0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54](https://kovan.etherscan.io/address/0x0c36C22C92dAa08c6C65FCb45d21449d9103Fa54 "View on Etherscan"). Go to the [MetaMask Ether Faucet](https://faucet.metamask.io/ "MetaMask Ether Faucet") to get test ETH for your wallet.
 
 
 ## Mission

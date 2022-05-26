@@ -2,10 +2,11 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract LuckDApp is Ownable {
+contract LuckDApp is Ownable, ERC721 {
   using SafeMath for uint256;
 
   event LuckChallengeResults(bool results, uint random, uint[] ldna);
@@ -26,10 +27,15 @@ contract LuckDApp is Ownable {
   mapping (uint => address) public ldnaToOwner;
   mapping (address => uint) ldnaCount;
   mapping (bytes32 => bool) hashToLDNA;
+  mapping (uint => address) ldnaApprovals;
 
   modifier onlyOwnerOf(uint _ldna) {
     require(msg.sender == ldnaToOwner[_ldna]);
     _;
+  }
+
+  constructor() ERC721("LuckDNA", "LDNA") {
+
   }
 
   function _createLDNA(address _owner) internal {
@@ -65,8 +71,8 @@ contract LuckDApp is Ownable {
 
   function _random(uint _num) internal returns (uint) {
     uint random = uint(keccak256(abi.encodePacked(block.timestamp, msg.sender, nonce))) % _num;
-    random = random - 1;
-    nonce++;
+    random = random.sub(1);
+    nonce = nonce.add(1);
     return random;
   }
 
@@ -82,6 +88,13 @@ contract LuckDApp is Ownable {
     }
     uint[] memory ldna = playerLDNA(msg.sender);
     emit LuckChallengeResults(results, random, ldna);
+  }
+
+  function _transfer(address _from, address _to, uint256 _tokenId) internal override {
+    ldnaCount[_to] = ldnaCount[_to].add(1);
+    ldnaCount[msg.sender] = ldnaCount[msg.sender].sub(1);
+    ldnaToOwner[_tokenId] = _to;
+    emit Transfer(_from, _to, _tokenId);
   }
 
   function newPlayer(string memory _name) public {
@@ -106,10 +119,10 @@ contract LuckDApp is Ownable {
   function playerLDNA(address _owner) public view returns(uint[] memory) {
     uint[] memory ldna = new uint[](ldnaCount[_owner]);
     uint counter = 0;
-    for (uint i = 0; i < luckDNA.length; i++) {
+    for (uint i = 0; i < luckDNA.length; i = i.add(1)) {
       if (ldnaToOwner[i] == _owner) {
         ldna[counter] = i;
-        counter++;
+        counter = counter.add(1);
       }
     }
     return ldna;
@@ -128,5 +141,23 @@ contract LuckDApp is Ownable {
     require(msg.value == ldnaCost && ldnaCount[msg.sender] == 0);
     _createLDNA(msg.sender);
     _createLDNA(address(this));
+  }
+
+  function balanceOf(address _owner) public view override returns (uint256) {
+    return ldnaCount[_owner];
+  }
+
+  function ownerOf(uint256 _tokenId) public view override returns (address) {
+    return ldnaToOwner[_tokenId];
+  }
+
+  function transferFrom(address _from, address _to, uint256 _tokenId) public override {
+    require (ldnaToOwner[_tokenId] == msg.sender || ldnaApprovals[_tokenId] == msg.sender);
+    _transfer(_from, _to, _tokenId);
+  }
+
+  function approve(address _approved, uint256 _tokenId) public override onlyOwnerOf(_tokenId) {
+    ldnaApprovals[_tokenId] = _approved;
+    emit Approval(msg.sender, _approved, _tokenId);
   }
 }
