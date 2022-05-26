@@ -10,7 +10,9 @@ contract("LuckDApp", (accounts) => {
   });
   it("should be able to create a new player", async () => {
     const player = await contractInstance.newPlayer(playerNames[0], {from: alice});
+    const name = await contractInstance.playerToName.call(alice);
     assert.equal(player.receipt.status, true);
+    assert.equal(name, playerNames[0]);
   })
   it("should not be able to create two players", async () => {
     await contractInstance.newPlayer(playerNames[0], {from: alice});
