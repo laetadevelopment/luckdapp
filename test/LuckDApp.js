@@ -47,4 +47,31 @@ contract("LuckDApp", (accounts) => {
       assert.equal(ldna.receipt.status, true);
     }
   })
+  context("transfer LDNA without approval", async () => {
+    it("should transfer a LDNA", async () => {
+      const result = await contractInstance.newPlayer(playerNames[0], {from: alice});
+      const playerLDNA = await contractInstance.playerLDNA.call(alice);
+      await contractInstance.transferFrom(alice, bob, playerLDNA[0], {from: alice});
+      const newOwner = await contractInstance.ownerOf(playerLDNA[0]);
+      expect(newOwner).to.equal(bob);
+    })
+  })
+  context("transfer LDNA with approval", async () => {
+    it("should approve and then transfer a LDNA when the approved address calls transferForm", async () => {
+      const result = await contractInstance.newPlayer(playerNames[0], {from: alice});
+      const playerLDNA = await contractInstance.playerLDNA.call(alice);
+      await contractInstance.approve(bob, playerLDNA[0], {from: alice});
+      await contractInstance.transferFrom(alice, bob, playerLDNA[0], {from: bob});
+      const newOwner = await contractInstance.ownerOf(playerLDNA[0]);
+      expect(newOwner).to.equal(bob);
+    })
+    it("should approve and then transfer a LDNA when the owner calls transferForm", async () => {
+      const result = await contractInstance.newPlayer(playerNames[0], {from: alice});
+      const playerLDNA = await contractInstance.playerLDNA.call(alice);
+      await contractInstance.approve(bob, playerLDNA[0], {from: alice});
+      await contractInstance.transferFrom(alice, bob, playerLDNA[0], {from: alice});
+      const newOwner = await contractInstance.ownerOf(playerLDNA[0]);
+      expect(newOwner).to.equal(bob);
+    })
+  })
 })
