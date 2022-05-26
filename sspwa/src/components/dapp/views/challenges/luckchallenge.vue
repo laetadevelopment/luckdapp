@@ -88,7 +88,7 @@ export default {
       this.chooseLDNA = true;
     },
     refresh() {
-      if (this.metamask.web3.currentProvider.networkVersion == 3) {
+      if (this.metamask.web3.currentProvider.networkVersion == 42) {
         this.$store.dispatch("refreshLDNA");
       } else {
         this.$store.dispatch('switchNetwork');
@@ -102,7 +102,7 @@ export default {
     },
     start() {
       if (this.selectedLDNA) {
-        if (this.metamask.web3.currentProvider.networkVersion == 3) {
+        if (this.metamask.web3.currentProvider.networkVersion == 42) {
           this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
         } else {
           this.$store.dispatch('switchNetwork');
