@@ -37,6 +37,7 @@ export default {
   height: 75%;
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
   justify-content: space-evenly;
   align-items: center;
   position: absolute;
@@ -47,6 +48,7 @@ export default {
 }
 #dappMenu button {
   max-width: 47.5%;
+  margin: 10px 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
