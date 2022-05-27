@@ -26,6 +26,10 @@
 
 ## SSPWA
 
+### intro view
+
+- need to add button to unmute video
+
 ### app header view
 
 - need the Connect MetaMask button to reload main SSPWA component instead of reloading entire page
