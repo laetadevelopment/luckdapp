@@ -3,6 +3,10 @@
 
 ## DApp
 
+### LDNA struct
+
+- need to store token design so it shows when you load the NFT
+
 ### newPlayer function
 
 - should this function return anything or emit an event?
@@ -22,10 +26,18 @@
 
 ## SSPWA
 
+### app header view
+
+- need button to connect MetaMask wallet that goes to create player view if address does not have player associated with it yet
+
 ### create player view
 
 - need to provide visual effect while transaction is pending
 - failed transaction needs to be indicated and Create Player button needs to be enabled again
+
+### dapp header view
+
+- need button to disconnect MetaMask wallet and return to intro view
 
 ### luck challenge view
 
