@@ -2,7 +2,7 @@
   <div id="appMenu">
     <button class="background-animation" @click="load">Home</button>
     <button class="background-animation" @click="load">Learn More</button>
-    <button class="background-animation" @click="load">Coming Soon</button>
+    <button class="background-animation" @click="load">Coming Soon!</button>
     <button class="background-animation" @click="view"><img alt="View on GitHub" src="../../assets/github-mark.svg">GitHub</button>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       if (event.target.innerText == "Learn More") {
         this.$emit("load", "learnmore");
       }
-      if (event.target.innerText == "Coming Soon") {
+      if (event.target.innerText == "Coming Soon!") {
         this.$emit("load", "comingsoon");
       }
     },

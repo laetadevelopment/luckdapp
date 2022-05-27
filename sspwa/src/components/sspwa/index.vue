@@ -119,7 +119,6 @@ a {
 a:hover {
   color: rgba(51,148,64,75%);
 }
-/* TODO: add icons to the navigation buttons */
 button {
   width: 150px;
   height: 40px;

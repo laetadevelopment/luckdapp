@@ -1,11 +1,11 @@
 <template>
   <div v-if="showComingSoon" id="comingSoon" class="page">
     <div class="page-title">
-      <h1 ref="title">Coming Soon</h1>
+      <h1 ref="title">Coming Soon!</h1>
     </div>
     <div class="page-content" ref="content">
-      <p>Players are able to view their home screen once they have entered their name and linked their wallet. From there they can access the Challenges, Marketplace (coming soon), and Luckverse (coming soon) or they can be accessed from the menu activated by the button in the top left. The LuckDNA (LDNA), Luckcoins (LKC), and LuckNFTs (LNFTS) in their wallet are accessible at all times from the buttons in the bar at the bottom of the screen. The first challenge available is the Luck Challenge. The HiLo challenge will be available soon and will allow players to challenge other players to a new game of luck.</p>
-      <p>A player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.</p>
+      <p>Soon players will be able to convert the LDNA in their wallet to Luckcoins (LKC). The amount of LKC the player will receive will be based on the value of the LDNA they are converting. The value is determined based on the opacity of the LDNA. The opacity can be anywhere from zero to one hundred percent and the value of each LDNA is equal to the percentage.</p>
+      <p>Once the ability to convert LDNA to LKC is released the HiLo Challenge will be released as well. In this challenge you will be able to challenge another player to a game of luck. More details about the HiLo Challenge are coming soon.</p>
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="view"><img alt="View on GitHub" src="../../../assets/github-mark.svg">GitHub</button>

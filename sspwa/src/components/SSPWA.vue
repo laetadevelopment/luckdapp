@@ -14,7 +14,6 @@
           v-if="showVideoBackground"
           ref="videobackground"
           :src="require('@/assets/luckdapp-intro.mp4')"
-          :muted="false"
           :loop="false"
           @click="play"
         />
@@ -53,7 +52,7 @@ export default {
   data() {
     return {
       showIntro: true,
-      showVideoBackground: false,
+      showVideoBackground: true,
       createNewPlayer: false,
       loadIndex: false
     }

@@ -16,7 +16,7 @@
       </div>
       <div v-if="showDetails" class="ldnaDetails">
         <h3>LDNA #{{ ldnaDetails.ldna }}</h3>
-        <p>rgba({{ ldnaDetails.r }},{{ ldnaDetails.g }},{{ ldnaDetails.b }},{{ ldnaDetails.a }})</p>
+        <p>rgba({{ ldnaDetails.r }},{{ ldnaDetails.g }},{{ ldnaDetails.b }},{{ ldnaDetails.a }}%)</p>
       </div>
     </div>
     <div class="page-cta" ref="cta">

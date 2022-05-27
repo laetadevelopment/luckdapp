@@ -1,8 +1,14 @@
 <template>
   <div id="appBar">
-    <a class="github-button" href="https://github.com/laetadevelopment/luckdapp" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star the SSPWA Template on GitHub">Star</a>
-    <a class="github-button" href="https://github.com/laetadevelopment/luckdapp/discussions" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-comment-discussion" data-size="large" aria-label="Discuss laetadevelopment/luckdapp on GitHub">Discuss</a>
-    <a class="github-button" href="https://github.com/sponsors/laetadevelopment" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @laetadevelopment on GitHub">Sponsor</a>
+    <div>
+      <a class="github-button" href="https://github.com/laetadevelopment/luckdapp" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star the SSPWA Template on GitHub">Star</a>
+    </div>
+    <div>
+      <a class="github-button" href="https://github.com/laetadevelopment/luckdapp/discussions" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-comment-discussion" data-size="large" aria-label="Discuss laetadevelopment/luckdapp on GitHub">Discuss</a>
+    </div>
+    <div>
+      <a class="github-button" href="https://github.com/sponsors/laetadevelopment" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @laetadevelopment on GitHub">Sponsor</a>
+    </div>
   </div>
 </template>
 
@@ -35,8 +41,7 @@ export default {
   box-sizing: border-box;
   z-index: 2;
 }
-#appBar span {
-  display: inline-flex;
-  align-items: center;
+#appBar div {
+  height: 28px;
 }
 </style>
