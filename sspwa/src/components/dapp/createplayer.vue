@@ -30,9 +30,9 @@ export default {
       }
       this.name = event.target.value;
     },
-    install(event) {
+    install() {
       event.target.disabled = true;
-      this.$store.dispatch('installMetamask');
+      this.$store.dispatch('installMetaMask');
     },
     create() {
       if (this.name) {

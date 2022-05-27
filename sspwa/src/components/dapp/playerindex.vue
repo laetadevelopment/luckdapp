@@ -79,13 +79,6 @@ export default {
           this.showDAppMenu = false;
         }
       }
-      if (component == 'dappBar') {
-        if (!this.showDAppBar) {
-          this.showDAppBar = true;
-        } else {
-          this.showDAppBar = false;
-        }
-      }
     },
     load(page) {
       if (page == 'playerhome') {

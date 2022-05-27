@@ -1,30 +1,29 @@
 <template>
-  <div v-if="showHome" id="home" class="page">
+  <div v-if="showComingSoon" id="comingSoon" class="page">
     <div class="page-title">
-      <h1 ref="title">Home</h1>
+      <h1 ref="title">Coming Soon</h1>
     </div>
     <div class="page-content" ref="content">
-      <h2>The mission of LuckD.App is to create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on their luck in different challenges.</h2>
-      <p>LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application (<a href="https://sspw.app" title="Interact with the SSPWA Template">SSPWA</a>) enables user interaction with LuckDApp. When a new player is created two LuckDNA (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.</p>
+      <p>Players are able to view their home screen once they have entered their name and linked their wallet. From there they can access the Challenges, Marketplace (coming soon), and Luckverse (coming soon) or they can be accessed from the menu activated by the button in the top left. The LuckDNA (LDNA), Luckcoins (LKC), and LuckNFTs (LNFTS) in their wallet are accessible at all times from the buttons in the bar at the bottom of the screen. The first challenge available is the Luck Challenge. The HiLo challenge will be available soon and will allow players to challenge other players to a new game of luck.</p>
+      <p>A player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.</p>
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="view"><img alt="View on GitHub" src="../../../assets/github-mark.svg">GitHub</button>
+      <button class="background-animation" @click="load">Home</button>
       <button class="background-animation" @click="load">Learn More</button>
-      <button class="background-animation" @click="load">Coming Soon</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'comingSoon',
   data() {
     return {
-      showHome: true
+      showComingSoon: true
     }
   },
   methods: {
-    // TODO: refactor this method to be dynamic and enlarge font as well
     overflow() {
       if (this.$refs.title) {
         if (this.$refs.title.scrollHeight > this.$refs.title.clientHeight) {
@@ -59,13 +58,13 @@ export default {
       window.open('https://github.com/laetadevelopment/luckdapp','_blank');
     },
     load() {
+      if (event.target.innerText == "Home") {
+        this.$emit("load", "home");
+      }
       if (event.target.innerText == "Learn More") {
         this.$emit("load", "learnmore");
       }
-      if (event.target.innerText == "Coming Soon") {
-        this.$emit("load", "comingsoon");
-      }
-    }
+    },
   },
   mounted() {
     this.overflow();

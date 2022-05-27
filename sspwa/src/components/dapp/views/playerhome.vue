@@ -4,7 +4,7 @@
       <h1 ref="title">Welcome {{ player.name }}!</h1>
     </div>
     <div class="page-content" ref="content">
-      <p>You can access the Challenges, Marketplace (coming soon), and Luckverse (coming soon) from here or from the menu activated by the button in the top left. Your LuckDNA (LDNA), Luckcoins (LKC), and LuckNFTs (LNFTS) are accessible from the bar at the bottom which can be hidden with the button in the top right.</p>
+      <p>You can access the Challenges, Marketplace (coming soon), and Luckverse (coming soon) from here or from the menu activated by the button in the top left. Your LuckDNA (LDNA), Luckcoins (LKC), and LuckNFTs (LNFTS) are accessible at all times from the buttons in the bar at the bottom of the screen.</p>
     </div>
     <div class="page-cta" ref="cta">
       <button class="background-animation" @click="challenges">Challenges</button>
@@ -74,6 +74,5 @@ export default {
 <style scoped>
 .page-cta button {
   max-width: 30%;
-  border-radius: 50px;
 }
 </style>

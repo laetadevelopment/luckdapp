@@ -79,7 +79,4 @@ export default {
   font-size: 1.2em;
   text-align: center;
 }
-.page-cta button {
-  border-radius: 50px;
-}
 </style>

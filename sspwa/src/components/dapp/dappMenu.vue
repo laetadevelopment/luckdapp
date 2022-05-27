@@ -46,11 +46,9 @@ export default {
   box-sizing: border-box;
 }
 #dappMenu button {
-  height: 50px;
   max-width: 47.5%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
 }
 </style>

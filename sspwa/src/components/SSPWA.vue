@@ -4,7 +4,7 @@
       <div v-if="showIntro && !player.name" id="intro">
         <div class="intro">
           <div class="intro-header">
-            <button @click="install">Install LuckD.App</button>
+            <button @click="install">Install DApp</button>
             <h2>Do you feel lucky?</h2>
             <button @click="load">Learn More</button>
           </div>
@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       showIntro: true,
-      showVideoBackground: true,
+      showVideoBackground: false,
       createNewPlayer: false,
       loadIndex: false
     }
@@ -66,7 +66,7 @@ export default {
     window.addEventListener("appinstalled", () => {
       this.installApp = null;
     });
-    this.$store.dispatch('setMetamask');
+    this.$store.dispatch('setMetaMask');
   },
   methods: {
     async install() {
@@ -134,14 +134,20 @@ export default {
   align-items: center;
 }
 .intro-header button {
-  height: 40px;
-  border-radius: 40px;
-  color: rgb(255,255,255);
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
   border-color: rgb(255,255,255);
+  font-size: .7em;
+  color: rgb(255,255,255);
+  text-align: center;
 }
 .intro-header button:hover {
   background: rgb(255,255,255);
   color: rgb(26,117,133);
+}
+.intro-header h2 {
+  font-size: 1.7em;
 }
 #intro .vue-responsive-videobg {
   height: 70%;

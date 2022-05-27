@@ -1,16 +1,16 @@
 <template>
   <header>
     <div id="menuButton">
-      <button @click="toggleAppMenu">
-        <img alt="Toggle Menu" src="../../assets/luckdapp-icon.svg">
+      <button @click="menu">
+        <img alt="Menu" src="../../assets/luckdapp-icon.svg">
       </button>
     </div>
     <div id="logo">
       <img @click="home" alt="SSPWA logo" src="../../assets/luckdapp-logo.png">
     </div>
-    <div id="appBarButton">
-      <button @click="toggleAppBar">
-        <img alt="Toggle App Bar" src="../../assets/github-mark.svg">
+    <div id="connectButton">
+      <button @click="connect">
+        <img alt="Connect MetaMask" src="../../assets/metamask-fox.svg">
       </button>
     </div>
   </header>
@@ -20,14 +20,19 @@
 export default {
   name: 'appHeader',
   methods: {
-    toggleAppMenu() {
+    menu() {
       this.$emit("toggle", "appMenu");
     },
     home() {
       this.$emit("load", "home");
     },
-    toggleAppBar() {
-      this.$emit("toggle", "appBar");
+    connect() {
+      if (event.target.type) {
+        event.target.disabled = true;
+      } else {
+        event.target.parentElement.disabled = true;
+      }
+      this.$store.dispatch('connectMetaMask');
     }
   }
 }
@@ -36,23 +41,19 @@ export default {
 <style scoped>
 header {
   width: 100%;
-  height:  15%;
+  height: 15%;
   position: relative;
 }
 #menuButton {
-  width: 40px;
-  height: 40px;
   position: absolute;
-  left: 10px;
   top: 10px;
+  left: 10px;
 }
 header button {
-  width: 100%;
-  height: 100%;
+  width: 40px;
   padding: 0;
   background: rgba(51,148,64,95%);
   border-color: rgb(51,148,64);
-  border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,10 +62,9 @@ header button:hover {
   background: rgba(51,148,64,75%);
 }
 header button img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
-/* TODO: animate fill of SVG */
 header #logo {
   max-width: 50%;
   height: 100%;
@@ -78,11 +78,9 @@ header #logo img {
   max-width: 100%;
   max-height: 100%;
 }
-#appBarButton {
-  width: 40px;
-  height: 40px;
+#connectButton {
   position: absolute;
-  right: 10px;
   top: 10px;
+  right: 10px;
 }
 </style>

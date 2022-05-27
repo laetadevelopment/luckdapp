@@ -82,7 +82,4 @@ export default {
 .page-content h3 {
   font-size: 1em;
 }
-.page-cta button {
-  border-radius: 50px;
-}
 </style>

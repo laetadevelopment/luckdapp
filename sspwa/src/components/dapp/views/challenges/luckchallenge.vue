@@ -142,12 +142,9 @@ export default {
 }
 .page-cta button {
   max-width: 40%;
-  border-radius: 50px;
 }
 .page-cta #refresh {
   width: 40px;
-  height: 40px;
-  border-radius: 40px;
 }
 .page-cta #refresh img {
   width: 30px;

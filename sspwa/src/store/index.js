@@ -29,7 +29,7 @@ export default createStore({
   getters: {
   },
   mutations: {
-    updateMetamask (state, payload) {
+    updateMetaMask (state, payload) {
       state.metamask.installed = payload.installed;
       state.metamask.connected = payload.connected;
       state.metamask.address = payload.address;
@@ -49,16 +49,42 @@ export default createStore({
     }
   },
   actions: {
-    setMetamask ({commit}) {
+    setMetaMask ({commit}) {
       metamask.then(result => {
-        commit('updateMetamask', result);
+        commit('updateMetaMask', result);
       }).catch(e => {
         console.error('Error setting MetaMask:', e);
       })
     },
-    installMetamask () {
+    installMetaMask () {
       var onboarding = new MetaMaskOnboarding();
       onboarding.startOnboarding();
+    },
+    connectMetaMask (context) {
+      context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
+        context.state.metamask.connected = true;
+        context.state.metamask.address = result[0];
+        context.state.metamask.network = context.state.metamask.web3.currentProvider.networkVersion;
+        LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+        LuckDApp.deployed().then((instance) => instance.playerToName.call(context.state.metamask.address)).then((name) => {
+          if (!name) {
+            console.log('create player');
+          } else {
+            LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
+              context.commit('updatePlayer', {
+                name: name,
+                ldna: ldna.toString()
+              });
+            });
+            console.log('player set');
+          }
+        });
+      }).catch(e => {
+        console.error('Error connecting MetaMask:', e);
+      })
+    },
+    disconnectMetaMask (context) {
+      console.log('disconnect');
     },
     createPlayer (context, payload) {
       context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {

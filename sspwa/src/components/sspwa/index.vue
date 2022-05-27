@@ -3,7 +3,8 @@
     <appHeader @load="load" @toggle="toggle" />
     <main>
       <home v-if="showHome" @load="load" />
-      <learnMore v-if="showLearnMore" @load="load" @toggle="toggle" />
+      <learnMore v-if="showLearnMore" @load="load" />
+      <comingSoon v-if="showComingSoon" @load="load" />
     </main>
     <appMenu v-if="showAppMenu" @load="load" @toggle="toggle" />
     <appBar v-if="showAppBar" />
@@ -14,8 +15,8 @@
 <script>
 import appHeader from './appHeader.vue'
 import home from './views/home.vue'
-// import app views to load in main element
 import learnMore from './views/learnMore.vue'
+import comingSoon from './views/comingSoon.vue'
 import appFooter from './appFooter.vue'
 import appMenu from './appMenu.vue'
 import appBar from './appBar.vue'
@@ -26,6 +27,7 @@ export default {
     appHeader,
     home,
     learnMore,
+    comingSoon,
     appFooter,
     appMenu,
     appBar
@@ -34,12 +36,12 @@ export default {
     return {
       showHome: true,
       showLearnMore: false,
+      showComingSoon: false,
       showAppMenu: false,
       showAppBar: true
     }
   },
   methods: {
-    // TODO: refactor component toggle logic and make experience more interactive
     toggle(component) {
       if (component == 'appMenu') {
         if (!this.showAppMenu) {
@@ -48,26 +50,28 @@ export default {
           this.showAppMenu = false;
         }
       }
-      if (component == 'appBar') {
-        if (!this.showAppBar) {
-          this.showAppBar = true;
-        } else {
-          this.showAppBar = false;
-        }
-      }
     },
-    // TODO: refactor page loading logic and make experience more interactive
     load(page) {
       if (page == 'home') {
         this.showLearnMore = false;
+        this.showComingSoon = false;
         this.showHome = true;
         if (this.showAppMenu) {
           this.showAppMenu = false;
         }
       }
-      if (page == 'learnMore') {
+      if (page == 'learnmore') {
         this.showHome = false;
+        this.showComingSoon = false;
         this.showLearnMore = true;
+        if (this.showAppMenu) {
+          this.showAppMenu = false;
+        }
+      }
+      if (page == 'comingsoon') {
+        this.showHome = false;
+        this.showLearnMore = false;
+        this.showComingSoon = true;
         if (this.showAppMenu) {
           this.showAppMenu = false;
         }
@@ -118,10 +122,13 @@ a:hover {
 /* TODO: add icons to the navigation buttons */
 button {
   width: 150px;
-  border-radius: 10px;
+  height: 40px;
+  padding: 0;
+  border-radius: 40px;
   border: 3px solid rgb(0,0,0);
   background: transparent;
   color: rgb(0,0,0);
+  font-size: .9em;
   font-weight: bold;
   cursor: pointer;
 }
@@ -224,7 +231,6 @@ button {
 .page-cta button {
   max-width: 47.5%;
   max-height: 100%;
-  padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: center;

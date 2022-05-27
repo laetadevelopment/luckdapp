@@ -40,14 +40,12 @@ export default {
 #dappBar button {
   width: 100px;
   max-width: 30%;
-  height: 40px;
   max-height: 90%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: rgb(255,255,255);
   border-color: rgb(255,255,255);
-  border-radius: 40px;
+  color: rgb(255,255,255);
 }
 #dappBar button:hover {
   background: rgb(255,255,255);

@@ -4,19 +4,23 @@
 
 ## Mission
 
-> To create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on pure luck.
+> To create a gamified metaverse using blockchain technology that allows players to accumulate different tokens based on luck in different challenges.
 
 
 
 ## Summary
 
-LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. The option to download LuckD.App to your device is provided when you visit https://luckd.app in a supported web browser. When a new player is created two LuckDNA (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
+LuckD.App is a decentralized application (DApp) powered by smart contracts. A single screen progressive web application ([SSPWA](https://sspw.app "Interact with the SSPWA Template")) enables user interaction with LuckDApp. When a new player is created two LuckDNA (LDNA) are minted. The player receives their first LDNA for free and one LDNA is sent to the treasury. Each LDNA has a completely random color and opacity combination assigned to it. The combination is unique so no LDNA is the same as another. The total supply of LDNA is 1,694,498,816. If the total supply is reached no new players can be created.
 
-Players are able to view their home screen once they have entered their name and linked their wallet. From there they can view their available challenges. The player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
+Players are able to view their home screen once they have entered their name and linked their wallet. From there they can access the Challenges, Marketplace (coming soon), and Luckverse (coming soon) or they can be accessed from the menu activated by the button in the top left. The LuckDNA (LDNA), Luckcoins (LKC), and LuckNFTs (LNFTS) in their wallet are accessible at all times from the buttons in the bar at the bottom of the screen. The first challenge available is the Luck Challenge. The HiLo challenge will be available soon and will allow players to challenge other players to a new game of luck.
 
-When a player has zero LDNA in their connected wallet they are given the option to purchase one more LDNA. The purchase amount is set by the DApp and sent to the treasury. If a new LDNA is purchased two more tokens are minted. One is sent to the player that makes the purchase and one is sent to the treasury.
+A player must have at least one LDNA in their connected wallet to start the Luck Challenge. The propability of winning the Luck Challenge is exactly 50%. If the challenge is won the player recieves one new LDNA in their wallet. If the challenge is lost one LDNA from their wallet is burned making the token available to be minted again. If the total supply of LDNA is reached the challenge becomes unavailable until LDNA is burned.
 
-Soon players will be able to convert the LDNA in their wallet to Luckcoins (LKC). The amount of LKC the player will receive is based on the value of the LDNA they are converting. The value is determined based on the opacity of the LDNA. The opacity can be anywhere from zero to one hundred percent and the value of each LDNA is equal to the percentage.
+When a player has zero LDNA in their connected wallet they are given the option to purchase one more LDNA from the Luck Challenge or from the LDNA screen. The purchase amount is set by the DApp and sent to the treasury. If a new LDNA is purchased two more tokens are minted. One is sent to the player that makes the purchase and one is sent to the treasury.
+
+Soon players will be able to convert the LDNA in their wallet to Luckcoins (LKC). The amount of LKC the player will receive will be based on the value of the LDNA they are converting. The value is determined based on the opacity of the LDNA. The opacity can be anywhere from zero to one hundred percent and the value of each LDNA is equal to the percentage.
+
+Once the ability to convert LDNA to LKC is released the HiLo Challenge will be released as well. In this challenge you will be able to challenge another player to a game of luck. More details about the HiLo Challenge are coming soon.
 
 Read the architecture below to learn about what features are planned for the future of LuckD.App. Please send any feature suggestions or bug reports through GitHub.
 
