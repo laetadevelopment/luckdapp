@@ -19,6 +19,7 @@
         />
         <createplayer v-if="createNewPlayer" />
         <div class="intro-cta">
+          <button v-if="!createNewPlayer" class="background-animation" @click="connect"><img alt="Connect MetaMask" src="../assets/metamask-fox.svg">Connect</button>
           <button v-if="!createNewPlayer" class="background-animation" @click="newPlayer">Create New Player</button>
           <h3 v-if="createNewPlayer">Enter your name and connect your wallet to gain access to LuckD.App.</h3>
           <p v-if="createNewPlayer">After creating a player you will be transferred your first LDNA!</p>
@@ -78,6 +79,9 @@ export default {
     play() {
       this.$refs.videobackground.player.play();
     },
+    connect() {
+      this.$store.dispatch('reconnectMetaMask');
+    },
     newPlayer() {
       this.showVideoBackground = false;
       this.createNewPlayer = true;
@@ -116,7 +120,7 @@ export default {
 #intro h3 {
   color: rgb(255,255,255);
 }
-.intro, .intro-cta {
+.intro {
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -153,11 +157,24 @@ export default {
   max-height: 45vh;
   cursor: pointer;
 }
+.intro-cta {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 .intro-cta button {
-  width: 250px;
+  width: 160px;
   height: 50px;
   border-radius: 50px;
   border-color: rgb(255,255,255) !important;
-  font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+.intro-cta button img {
+  max-height: 90%;
+  margin-right: 10px;
 }
 </style>

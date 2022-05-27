@@ -73,6 +73,6 @@ export default {
 
 <style scoped>
 .page-cta button {
-  max-width: 30%;
+  max-width: 31%;
 }
 </style>

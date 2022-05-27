@@ -5,7 +5,7 @@
       <button class="background-animation" @click="install"><img alt="Install MetaMask" src="../../assets/metamask-fox.svg">Install MetaMask</button>
     </div>
     <div v-if="metamask.installed" class="metamask-installed">
-      <button class="background-animation" @click="create"><img alt="Login with MetaMask" src="../../assets/metamask-fox.svg">Create Player</button>
+      <button class="background-animation" @click="create"><img alt="Connect MetaMask" src="../../assets/metamask-fox.svg">Create Player</button>
     </div>
   </div>
 </template>

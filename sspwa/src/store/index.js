@@ -46,6 +46,11 @@ export default createStore({
       if (exists === -1) {
         state.player.ldnaDetails.push(payload);
       }
+    },
+    disconnectMetaMask (state) {
+      state.player.name = null;
+      state.player.ldna = null;
+      state.player.ldnaDetails = [];
     }
   },
   actions: {
@@ -68,23 +73,43 @@ export default createStore({
         LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
         LuckDApp.deployed().then((instance) => instance.playerToName.call(context.state.metamask.address)).then((name) => {
           if (!name) {
-            console.log('create player');
+            window.location.reload();
           } else {
             LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
               context.commit('updatePlayer', {
                 name: name,
                 ldna: ldna.toString()
               });
+              window.location.reload();
             });
-            console.log('player set');
           }
         });
       }).catch(e => {
         console.error('Error connecting MetaMask:', e);
       })
     },
-    disconnectMetaMask (context) {
-      console.log('disconnect');
+    reconnectMetaMask (context) {
+      context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
+        context.state.metamask.connected = true;
+        context.state.metamask.address = result[0];
+        context.state.metamask.network = context.state.metamask.web3.currentProvider.networkVersion;
+        LuckDApp.setProvider(context.state.metamask.web3.currentProvider);
+        LuckDApp.deployed().then((instance) => instance.playerToName.call(context.state.metamask.address)).then((name) => {
+          if (name) {
+            LuckDApp.deployed().then((instance) => instance.playerLDNA.call(context.state.metamask.address)).then((ldna) => {
+              context.commit('updatePlayer', {
+                name: name,
+                ldna: ldna.toString()
+              });
+            });
+          }
+        });
+      }).catch(e => {
+        console.error('Error connecting MetaMask:', e);
+      })
+    },
+    disconnectMetaMask ({commit}) {
+      commit('disconnectMetaMask');
     },
     createPlayer (context, payload) {
       context.state.metamask.ethereum.request({ method: 'eth_requestAccounts' }).then(result => {
