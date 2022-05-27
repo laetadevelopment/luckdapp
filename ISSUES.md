@@ -28,7 +28,7 @@
 
 ### app header view
 
-- need button to connect MetaMask wallet that goes to create player view if address does not have player associated with it yet
+- need the Connect MetaMask button to reload main SSPWA component instead of reloading entire page
 
 ### create player view
 
@@ -37,7 +37,7 @@
 
 ### dapp header view
 
-- need button to disconnect MetaMask wallet and return to intro view
+- need the Disconnect MetaMask button to disconnect wallet before resetting player state
 
 ### luck challenge view
 
