@@ -6,7 +6,7 @@
     <div class="page-content" ref="content">
       <div v-if="showChallenge">
         <h2>Are you ready to try your luck?</h2>
-        <p>You must have at least one LDNA in your wallet to start the challenge. When you are ready to begin select the Choose LDNA button in the bottom right. The propability of winning this challenge is exactly 50%. If you win the challenge a new LDNA will be minted and transferred to your wallet. If you loose the challenge the LDNA you chose will be burned making it available to be minted again.</p>
+        <p>You must have at least one LDNA in your wallet to start the challenge. When you are ready to begin select the Choose LDNA button in the bottom right of the screen. The propability of winning the challenge is exactly 50%. If you win the challenge a new LDNA will be minted and transferred to your wallet. If you loose the challenge the LDNA you chose will be burned.</p>
       </div>
       <ldnaselector v-if="chooseLDNA" @selected="selected" />
     </div>
@@ -14,7 +14,8 @@
       <button v-if="!chooseLDNA" class="background-animation" @click="challenges">Challenges</button>
       <button v-if="chooseLDNA" class="background-animation" @click="challenge">Luck Challenge</button>
       <button v-if="chooseLDNA" id="refresh" class="background-animation" @click="refresh"><img alt="Refresh LDNA" src="../../../../assets/ldna-refresh.svg"></button>
-      <button v-if="!chooseLDNA" class="background-animation" @click="choose">Choose LDNA</button>
+      <button v-if="!chooseLDNA && player.ldna" class="background-animation" @click="choose">Choose LDNA</button>
+      <button v-if="!chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
       <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
       <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
     </div>

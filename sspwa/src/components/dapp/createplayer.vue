@@ -1,6 +1,6 @@
 <template>
   <div id="createplayer">
-    <input ref="name" placeholder="Enter Name" @change="setName" />
+    <input v-if="metamask.installed" ref="name" placeholder="Enter Name" @change="setName" />
     <div v-if="!metamask.installed" class="metamask-install">
       <button class="background-animation" @click="install"><img alt="Install MetaMask" src="../../assets/metamask-fox.svg">Install MetaMask</button>
     </div>
