@@ -5,7 +5,8 @@
       <button class="background-animation" @click="install"><img alt="Install MetaMask" src="../../assets/metamask-fox.svg">Install MetaMask</button>
     </div>
     <div v-if="metamask.installed" class="metamask-installed">
-      <button class="background-animation" @click="create"><img alt="Connect MetaMask" src="../../assets/metamask-fox.svg">Create Player</button>
+      <button v-if="!wait" class="background-animation" @click="create"><img alt="Connect MetaMask" src="../../assets/metamask-fox.svg">Create Player</button>
+      <button v-if="wait" class="wait" disabled><img alt="Connect MetaMask" src="../../assets/metamask-fox.svg">Please wait&nbsp;<span class="dot-flashing"/></button>
     </div>
   </div>
 </template>
@@ -20,7 +21,8 @@ export default {
   },
   data() {
     return {
-      name: ''
+      name: '',
+      wait: false
     }
   },
   methods: {
@@ -37,7 +39,7 @@ export default {
     create() {
       if (this.name) {
         if (this.metamask.web3.currentProvider.networkVersion == 42) {
-          event.target.disabled = true;
+          this.wait = true;
           this.$store.dispatch({
             type: 'createPlayer',
             name: this.name
@@ -91,5 +93,56 @@ export default {
 #createplayer button img {
   max-height: 90%;
   margin-right: 10px;
+}
+#createplayer .wait {
+  color: rgb(255,255,255);
+}
+.dot-flashing {
+  width: 5px;
+  height: 5px;
+  top: 4px;
+  left: -3px;
+  margin-left: 8px;
+  position: relative;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+}
+.dot-flashing::before, .dot-flashing::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dot-flashing::before {
+  left: -7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.dot-flashing::after {
+  left: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+@keyframes dotFlashing {
+  0% {
+    background-color: rgb(255,255,255);
+  }
+  50%,
+  100% {
+    background-color: rgba(255,255,255,50%);
+  }
 }
 </style>

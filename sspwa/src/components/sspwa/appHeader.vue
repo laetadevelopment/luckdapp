@@ -19,6 +19,11 @@
 <script>
 export default {
   name: 'appHeader',
+  computed: {
+    metamask() {
+      return this.$store.state.metamask;
+    }
+  },
   methods: {
     menu() {
       this.$emit("toggle", "appMenu");
@@ -32,7 +37,11 @@ export default {
       } else {
         event.target.parentElement.disabled = true;
       }
-      this.$store.dispatch('connectMetaMask');
+      if (this.metamask.installed) {
+        this.$store.dispatch('connectMetaMask');
+      } else {
+        this.$store.dispatch('installMetaMask');
+      }
     }
   }
 }

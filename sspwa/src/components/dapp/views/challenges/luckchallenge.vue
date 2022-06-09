@@ -16,7 +16,8 @@
       <button v-if="chooseLDNA" id="refresh" class="background-animation" @click="refresh"><img alt="Refresh LDNA" src="../../../../assets/ldna-refresh.svg"></button>
       <button v-if="!chooseLDNA && player.ldna" class="background-animation" @click="choose">Choose LDNA</button>
       <button v-if="!chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
-      <button v-if="chooseLDNA && player.ldna" class="background-animation" @click="start">Let's go!</button>
+      <button v-if="chooseLDNA && player.ldna && !wait" class="background-animation" @click="start">Let's go!</button>
+      <button v-if="chooseLDNA && player.ldna && wait" class="background-animation" disabled>Please wait<span class="dot-flashing"/></button>
       <button v-if="chooseLDNA && !player.ldna" class="background-animation" @click="get">Get LDNA</button>
     </div>
   </div>
@@ -42,7 +43,8 @@ export default {
     return {
       showChallenge: true,
       chooseLDNA: false,
-      selectedLDNA: null
+      selectedLDNA: null,
+      wait: false
     }
   },
   methods: {
@@ -104,6 +106,7 @@ export default {
     start() {
       if (this.selectedLDNA) {
         if (this.metamask.web3.currentProvider.networkVersion == 42) {
+          this.wait = true;
           this.$store.dispatch("startLuckChallenge", this.selectedLDNA);
         } else {
           this.$store.dispatch('switchNetwork');
@@ -150,5 +153,53 @@ export default {
 .page-cta #refresh img {
   width: 30px;
   height: 30px;
+}
+.dot-flashing {
+  width: 5px;
+  height: 5px;
+  top: 3px;
+  left: 1px;
+  margin-left: 8px;
+  position: relative;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+}
+.dot-flashing::before, .dot-flashing::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dot-flashing::before {
+  left: -7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.dot-flashing::after {
+  left: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgb(255,255,255);
+  color: rgb(255,255,255);
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+@keyframes dotFlashing {
+  0% {
+    background-color: rgb(255,255,255);
+  }
+  50%,
+  100% {
+    background-color: rgba(255,255,255,50%);
+  }
 }
 </style>
